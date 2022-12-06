@@ -21,6 +21,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
 import com.hbb20.CountryCodePicker;
 
 import java.util.ArrayList;
@@ -39,7 +40,6 @@ public class ChefRegistration extends AppCompatActivity {
     DatabaseReference databaseReference;
     FirebaseDatabase firebaseDatabase;
     String fname, lname, emailid, password, confpassword, mobile, house, Area, Pincode, role = "Chef", statee, cityy;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,9 +89,7 @@ public class ChefRegistration extends AppCompatActivity {
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
+            public void onNothingSelected(AdapterView<?> parent) {}
         });
 
         Cityspin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -99,13 +97,10 @@ public class ChefRegistration extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Object value = parent.getItemAtPosition(position);
                 cityy = value.toString().trim();
-
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
+            public void onNothingSelected(AdapterView<?> parent) {}
         });
 
         databaseReference = firebaseDatabase.getInstance().getReference("Chef");
@@ -181,7 +176,8 @@ public class ChefRegistration extends AppCompatActivity {
                                                             });
                                                             AlertDialog Alert = builder.create();
                                                             Alert.show();
-                                                        } else {
+                                                        }
+                                                        else {
                                                             mDialog.dismiss();
                                                             ReusableCodeForAll.ShowAlert(ChefRegistration.this, "Error", task.getException().getMessage());
                                                         }
@@ -197,7 +193,6 @@ public class ChefRegistration extends AppCompatActivity {
                 }
             }
         });
-
     }
 
     String emailpattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
@@ -222,26 +217,33 @@ public class ChefRegistration extends AppCompatActivity {
         pincode.setErrorEnabled(false);
         pincode.setError("");
 
-        boolean isValid = false, isValidhouseno = false, isValidlname = false, isValidname = false, isValidemail = false, isValidpassword = false, isValidconfpassword = false, isValidmobilenum = false, isValidarea = false, isValidpincode = false;
+        boolean isValid = false, isValidhouseno = false, isValidlname = false,
+                isValidname = false, isValidemail = false, isValidpassword = false,
+                isValidconfpassword = false, isValidmobilenum = false, isValidarea = false,
+                isValidpincode = false;
         if (TextUtils.isEmpty(fname)) {
             Fname.setErrorEnabled(true);
             Fname.setError("Enter First Name");
-        } else {
+        }
+        else {
             isValidname = true;
         }
         if (TextUtils.isEmpty(lname)) {
             Lname.setErrorEnabled(true);
             Lname.setError("Enter Last Name");
-        } else {
+        }
+        else {
             isValidlname = true;
         }
         if (TextUtils.isEmpty(emailid)) {
             Email.setErrorEnabled(true);
             Email.setError("Email Is Required");
-        } else {
+        }
+        else {
             if (emailid.matches(emailpattern)) {
                 isValidemail = true;
-            } else {
+            }
+            else {
                 Email.setErrorEnabled(true);
                 Email.setError("Enter a Valid Email Id");
             }
@@ -249,7 +251,8 @@ public class ChefRegistration extends AppCompatActivity {
         if (TextUtils.isEmpty(password)) {
             Pass.setErrorEnabled(true);
             Pass.setError("Enter Password");
-        } else {
+        }
+        else {
             if (password.length() < 8) {
                 Pass.setErrorEnabled(true);
                 Pass.setError("Password is Weak");
@@ -260,45 +263,54 @@ public class ChefRegistration extends AppCompatActivity {
         if (TextUtils.isEmpty(confpassword)) {
             cpass.setErrorEnabled(true);
             cpass.setError("Enter Password Again");
-        } else {
+        }
+        else {
             if (!password.equals(confpassword)) {
                 cpass.setErrorEnabled(true);
                 cpass.setError("Password Dosen't Match");
-            } else {
+            }
+            else {
                 isValidconfpassword = true;
             }
         }
         if (TextUtils.isEmpty(mobile)) {
             mobileno.setErrorEnabled(true);
             mobileno.setError("Mobile Number Is Required");
-        } else {
+        }
+        else {
             if (mobile.length() < 10) {
                 mobileno.setErrorEnabled(true);
                 mobileno.setError("Invalid Mobile Number");
-            } else {
+            }
+            else {
                 isValidmobilenum = true;
             }
         }
         if (TextUtils.isEmpty(Area)) {
             area.setErrorEnabled(true);
             area.setError("Area Is Required");
-        } else {
+        }
+        else {
             isValidarea = true;
         }
         if (TextUtils.isEmpty(Pincode)) {
             pincode.setErrorEnabled(true);
             pincode.setError("Please Enter Pincode");
-        } else {
+        }
+        else {
             isValidpincode = true;
         }
         if (TextUtils.isEmpty(house)) {
             houseno.setErrorEnabled(true);
             houseno.setError("Fields Can't Be Empty");
-        } else {
+        }
+        else {
             isValidhouseno = true;
         }
 
-        isValid = (isValidarea && isValidconfpassword && isValidpassword && isValidpincode && isValidemail && isValidmobilenum && isValidname && isValidhouseno && isValidlname) ? true : false;
+        isValid = (isValidarea && isValidconfpassword && isValidpassword
+                && isValidpincode && isValidemail && isValidmobilenum
+                && isValidname && isValidhouseno && isValidlname) ?true : false;
         return isValid;
     }
 }
