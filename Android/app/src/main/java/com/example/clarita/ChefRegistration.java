@@ -109,6 +109,7 @@ public class ChefRegistration extends AppCompatActivity {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 fname = Fname.getEditText().getText().toString().trim();
                 lname = Lname.getEditText().getText().toString().trim();
                 emailid = Email.getEditText().getText().toString().trim();
