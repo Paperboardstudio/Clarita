@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -172,6 +173,10 @@ public class ChefRegistration extends AppCompatActivity {
 
                                                                     dialog.dismiss();
 
+                                                                    String phonenumber = Cpp.getSelectedCountryCodeWithPlus() + mobile;
+                                                                    Intent b = new Intent(ChefRegistration.this, ChefVerifyPhone.class);
+                                                                    b.putExtra("phonenumber", phonenumber);
+                                                                    startActivity(b);
                                                                 }
                                                             });
                                                             AlertDialog Alert = builder.create();
