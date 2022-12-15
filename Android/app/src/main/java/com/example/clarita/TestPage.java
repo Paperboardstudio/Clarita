@@ -21,15 +21,15 @@ import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
+import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
 
 import java.util.concurrent.TimeUnit;
 /**
- * This is not currently implemented in the app.
- * OTP Code is deprecated, the "sendverificationcode" script need to be updated with the lastest firebase scripts.
- * Link to old code: https://youtu.be/htyNuVHcaSQ
+ * This Activity is not in use.
+ * This was used for testing
  */
-public class ChefVerifyPhone extends AppCompatActivity {
+public class TestPage extends AppCompatActivity {
 
     String verificationId;
     FirebaseAuth FAuth;
@@ -41,7 +41,7 @@ public class ChefVerifyPhone extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chef_verify_phone);
+        setContentView(R.layout.activity_test_page);
 
         phoneno = getIntent().getStringExtra("phonenumber").trim();
 
@@ -132,13 +132,14 @@ public class ChefVerifyPhone extends AppCompatActivity {
 
     private void sendverificationcode(String number) {
 
-        PhoneAuthProvider.getInstance().verifyPhoneNumber(
-
-                number,
-                60L,
-                TimeUnit.SECONDS,
-                (Activity) TaskExecutors.MAIN_THREAD,
-                mcallBack);
+        PhoneAuthOptions options =
+                PhoneAuthOptions.newBuilder(FAuth)
+                        .setPhoneNumber("+358466326154")  // Phone number to verify
+                        .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
+                        .setActivity(this)                 // Activity (for callback binding)
+                        .setCallbacks(mcallBack)          // OnVerificationStateChangedCallbacks
+                        .build();
+        PhoneAuthProvider.verifyPhoneNumber(options);
     }
 
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mcallBack = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
@@ -154,7 +155,7 @@ public class ChefVerifyPhone extends AppCompatActivity {
 
         @Override
         public void onVerificationFailed(@NonNull FirebaseException e) {
-            Toast.makeText(ChefVerifyPhone.this, e.getMessage(), Toast.LENGTH_LONG).show();
+            Toast.makeText(TestPage.this, e.getMessage(), Toast.LENGTH_LONG).show();
 
         }
 
@@ -175,18 +176,18 @@ public class ChefVerifyPhone extends AppCompatActivity {
 
     private void linkCredential(PhoneAuthCredential credential) {
 
-        FAuth.getCurrentUser().linkWithCredential(credential).addOnCompleteListener(ChefVerifyPhone.this, new OnCompleteListener<AuthResult>() {
+        FAuth.getCurrentUser().linkWithCredential(credential).addOnCompleteListener(TestPage.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
 
                 if (task.isSuccessful()) {
 
-                    Intent intent = new Intent(ChefVerifyPhone.this, MainMenu.class);
+                    Intent intent = new Intent(TestPage.this, MainMenu.class);
                     startActivity(intent);
                     finish();
                 }
                 else {
-                    ReusableCodeForAll.ShowAlert(ChefVerifyPhone.this, "Error", task.getException().getMessage());
+                    ReusableCodeForAll.ShowAlert(TestPage.this, "Error", task.getException().getMessage());
                 }
             }
         });

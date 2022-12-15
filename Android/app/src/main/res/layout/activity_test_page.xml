@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/cat3"
-    tools:context=".ChefVefifyPhone">
-    
+    android:background="@drawable/cat1"
+    tools:context=".TestPage">
+
     <LinearLayout
         android:layout_width="280dp"
         android:layout_height="380dp"
@@ -18,16 +18,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:padding="15dp">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Enter OTP"
-        android:textSize="20sp"
-        android:textColor="@color/blue"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:fontFamily="monospace"
-        android:textStyle="italic"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enter OTP"
+            android:textSize="20sp"
+            android:textColor="@color/blue"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:fontFamily="monospace"
+            android:textStyle="italic"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="70dp"
@@ -63,10 +63,5 @@
             android:textAlignment="center"
             android:textColor="@color/gray"
             android:textSize="16sp"/>
-
-
-
-
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
