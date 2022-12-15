@@ -64,7 +64,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:height="48dp"
-                    android:drawableLeft="@drawable/phonewhite"
+                    android:drawableLeft="@drawable/grayemail"
 
                     android:drawablePadding="10dp"
                     android:hint="Email"
@@ -110,7 +110,8 @@
                 <com.hbb20.CountryCodePicker
                     android:id="@+id/CountryCode"
                     android:layout_width="120dp"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent">
+                </com.hbb20.CountryCodePicker>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/Mobileno"
@@ -260,7 +261,8 @@
                     android:background="#2196F3"
                     android:drawableLeft="@drawable/whiteemail"
                     android:padding="10dp"
-                    android:text="Button"
+                    android:text="Email"
+                    android:textSize="12sp"
                     android:textColor="#FFFFFF" />
 
                 <Button
@@ -275,6 +277,7 @@
                     android:drawablePadding="5dp"
                     android:padding="10dp"
                     android:text="Phone"
+                    android:textSize="12sp"
                     android:textColor="#FFFFFF" />
             </LinearLayout>
 

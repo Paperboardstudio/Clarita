@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -39,7 +41,8 @@ public class ChefRegistration extends AppCompatActivity {
     FirebaseAuth FAuth;
     DatabaseReference databaseReference;
     FirebaseDatabase firebaseDatabase;
-    String fname, lname, emailid, password, confpassword, mobile, house, Area, Pincode, role = "Chef", statee, cityy;
+    String fname, lname, emailid, password, confpassword, mobile, house, Area, Pincode, statee, cityy;
+    String role="Chef";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -170,8 +173,15 @@ public class ChefRegistration extends AppCompatActivity {
                                                                 @Override
                                                                 public void onClick(DialogInterface dialog, int which) {
 
+                                                                    /**
+                                                                     * This needs to be modified to not require OTP
+                                                                     * Redirect to log in screen
+                                                                     */
                                                                     dialog.dismiss();
-
+                                                                    String phonenumber = Cpp.getSelectedCountryCodeWithPlus() + mobile;
+                                                                    Intent b = new Intent(ChefRegistration.this, TestPage.class);
+                                                                    b.putExtra("phonenumber", phonenumber);
+                                                                    startActivity(b);
                                                                 }
                                                             });
                                                             AlertDialog Alert = builder.create();
@@ -278,7 +288,7 @@ public class ChefRegistration extends AppCompatActivity {
             mobileno.setError("Mobile Number Is Required");
         }
         else {
-            if (mobile.length() < 10) {
+            if (mobile.length() < 9) {
                 mobileno.setErrorEnabled(true);
                 mobileno.setError("Invalid Mobile Number");
             }

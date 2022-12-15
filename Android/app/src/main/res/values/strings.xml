@@ -8,6 +8,8 @@
     <string-array name="location">
         // This needs to be changed to the current physical location of the restaurant
         <item>Insert location name</item>
+        <item>Maharashtra</item>
+        <item>Madhyapradesh</item>
     </string-array>
 
     <string-array name="driver">
