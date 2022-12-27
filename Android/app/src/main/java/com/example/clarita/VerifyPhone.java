@@ -23,7 +23,7 @@ import com.google.firebase.auth.PhoneAuthProvider;
 
 import java.util.concurrent.TimeUnit;
 
-public class Chefsendotp extends AppCompatActivity {
+public class VerifyPhone extends AppCompatActivity {
 
     String verificationId;
     FirebaseAuth FAuth;
@@ -35,14 +35,13 @@ public class Chefsendotp extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chefsendotp);
+        setContentView(R.layout.activity_verify_phone);
+        phoneno = getIntent().getStringExtra("phonenumber").trim();
 
-        phoneno = getIntent().getStringExtra("Phonenumber").trim();
-
-        entercode = (EditText) findViewById(R.id.code);
+        entercode = (EditText) findViewById(R.id.codee);
         txt = (TextView) findViewById(R.id.text);
-        Resend = (Button) findViewById(R.id.Resendotp);
-        verify = (Button) findViewById(R.id.Verify);
+        Resend = (Button) findViewById(R.id.Resendotpp);
+        verify = (Button) findViewById(R.id.Verifyy);
         FAuth = FirebaseAuth.getInstance();
 
         Resend.setVisibility(View.INVISIBLE);
@@ -72,8 +71,7 @@ public class Chefsendotp extends AppCompatActivity {
             public void onTick(long millisUntilFinished) {
 
                 txt.setVisibility(View.VISIBLE);
-                txt.setText("Resend Code Within " + millisUntilFinished / 1000 + " Seconds");
-
+                txt.setText("Resend Code Within" + millisUntilFinished / 1000 + "Seconds");
             }
 
             /**
@@ -101,9 +99,7 @@ public class Chefsendotp extends AppCompatActivity {
 
                         txt.setVisibility(View.VISIBLE);
                         txt.setText("Resend Code Within " + millisUntilFinished / 1000 + " Seconds");
-
                     }
-
                     /**
                      * Callback fired when the time is up.
                      */
@@ -121,7 +117,6 @@ public class Chefsendotp extends AppCompatActivity {
 
         sendverificationcode(phonenum);
     }
-
 
     private void sendverificationcode(String number) {
 
@@ -143,38 +138,35 @@ public class Chefsendotp extends AppCompatActivity {
 
         @Override
         public void onVerificationFailed(@NonNull FirebaseException e) {
-            Toast.makeText(Chefsendotp.this, e.getMessage(), Toast.LENGTH_LONG).show();
-
+            Toast.makeText(VerifyPhone.this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
 
         @Override
         public void onCodeSent(String s, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
             super.onCodeSent(s, forceResendingToken);
-
             verificationId = s;
-
         }
     };
 
     private void verifyCode(String code) {
 
         PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationId, code);
-        signInWithPhone(credential);
+        linkCredential(credential);
     }
 
-    private void signInWithPhone(PhoneAuthCredential credential) {
+    private void linkCredential(PhoneAuthCredential credential) {
 
-        FAuth.signInWithCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        FAuth.getCurrentUser().linkWithCredential(credential).addOnCompleteListener(VerifyPhone.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
 
                 if (task.isSuccessful()) {
-                    startActivity(new Intent(Chefsendotp.this, ChefFoodPanel_BottomNavigation.class));
+                    Intent intent = new Intent(VerifyPhone.this, MainMenu.class);
+                    startActivity(intent);
                     finish();
-
                 }
                 else {
-                    ReusableCodeForAll.ShowAlert(Chefsendotp.this, "Error", task.getException().getMessage());
+                    ReusableCodeForAll.ShowAlert(VerifyPhone.this, "Error", task.getException().getMessage());
                 }
             }
         });
