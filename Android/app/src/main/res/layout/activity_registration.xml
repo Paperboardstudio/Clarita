@@ -258,11 +258,11 @@
                     android:layout_height="40dp"
                     android:layout_marginLeft="15dp"
                     android:layout_weight="1"
-                    android:background="#2196F3"
-                    android:drawableLeft="@drawable/whiteemail"
+                    android:background="#379AE6"
+                    android:drawableLeft="@drawable/grayemail"
                     android:padding="10dp"
                     android:text="Button"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#000000" />
 
                 <Button
                     android:id="@+id/phone"
