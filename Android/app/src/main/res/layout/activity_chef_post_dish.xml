@@ -34,16 +34,21 @@
         app:layout_constraintHorizontal_bias="0.53">
 
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/dishes"
-            android:layout_width="280dp"
-            android:layout_height="wrap_content"
-            android:hint="Dish name"
-            android:inputType="text"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp"
-            tools:ignore="TouchTargetSizeCheck" />
+        <TextView
+            android:layout_width="105dp"
+            android:layout_height="30dp"
+            android:id="@+id/textView"
+            android:text="Dish Name"
+            android:textColor="@color/white"
+            android:layout_marginLeft="5dp"
+            android:textSize="18sp" />
 
+        <Spinner
+            android:id="@+id/dishes"
+            android:layout_width="162dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="12dp"
+            android:background="#D0FFFFFF" />
     </LinearLayout>
 
     <com.google.android.material.textfield.TextInputLayout
