@@ -1,17 +1,19 @@
 import { View, Text, Image } from 'react-native'
 import React from 'react'
 
-const image =
-  "https://thecozycook.com/wp-content/uploads/2022/04/Lasagna-Recipe.jpg"
+export default function About(props) {
+  const {name, image, price, reviews, rating, categories} = props.route.params
 
-const title = "Farmhouse Kitchen Thai Cuisine"
-const description = "Thai - Comfort - Food - 🎫 - 4 ⭐ (291+)"
+  const formattedCategories = categories.map((cat) => cat.title).join(" • ")
 
-export default function About() {
+  const description = `${formattedCategories} ${
+    price ? " • " + price : ""
+  } • 🎫 • ${rating} ⭐ (${reviews}+)`
+
   return (
     <View>
       {<RestaurantImage image={image} />}
-      {<RestaurantTitle title={title} />}
+      {<RestaurantTitle name={name} />}
       {<RestaurantDescription description={description} />}
     </View>
   )
@@ -37,7 +39,7 @@ const RestaurantTitle = (props) => (
       marginTop: 10,
       marginHorizontal: 15,
     }}>
-    {props.title}
+    {props.name}
   </Text>
 )
 

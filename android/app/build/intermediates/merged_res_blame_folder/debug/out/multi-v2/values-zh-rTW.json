@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.rnfirstproject.app-mergeDebugResources-20:/values-zh-rTW/values-zh-rTW.xml",
+            "outputFile": "com.rnfirstproject.app-mergeDebugResources-27:/values-zh-rTW/values-zh-rTW.xml",
             "map": [
                 {
                     "source": "C:\\Users\\stefa\\.gradle\\caches\\transforms-3\\1b40e4574e76bff5831ef4bf4270480d\\transformed\\appcompat-1.4.1\\res\\values-zh-rTW\\values-zh-rTW.xml",

@@ -1,6 +1,8 @@
 import { View, Text, StyleSheet, Image, ScrollView } from 'react-native'
 import React from 'react'
 import { Divider } from '@rneui/themed'
+import BouncyCheckbox from 'react-native-bouncy-checkbox'
+import { useDispatch, useSelector } from 'react-redux'
 
 
 const foods = [
@@ -50,18 +52,52 @@ const foods = [
 	},
 ]
 
-
 //need to make sure there are enough food items for scroll functionallity to work
-export default function MenuItems() {
+export default function MenuItems(restaurantName) {
+
+	const dispatch = useDispatch()
+	const selectItem = (item, checkboxValue) =>
+		dispatch({
+			type: "ADD_TO:_CART",
+			payload: {
+				...item,
+				restaurantName: restaurantName,
+				checkboxValue: checkboxValue
+			}
+		})
+
+	const cartItems = useSelector
+		(state => state.cartReducer.selectedItems.items
+		)
+
+	const isFoodInCart = (food, cartItems) =>
+		Boolean(cartItems.find((item) => item.title == food.title))
+
+	const checkLog = (food, cartItems) =>
+		console.log(food)
+
 	return (
 		<ScrollView showsVerticalScrollIndicator={false}>
 			{foods.map((food, index) => (
 				<View key={index}>
 					<View style={styles.menuItemStyle}>
+						<BouncyCheckbox
+							iconStyle={{
+								marginLeft: -15,
+								borderColor: "lightgray"
+							}}
+							fillColor="green"
+							isChecked={checkLog(food, cartItems)}
+							onPress={(checkboxValue) => selectItem(food, checkboxValue)}
+						/>
 						<FoodInfo food={food} />
 						<FoodImage food={food} />
 					</View>
-					<Divider width={0.5} orientation="vertical" />
+					<Divider
+						width={0.5}
+						orientation="vertical"
+						style={{ marginHorizontal: 20 }}
+					/>
 				</View>
 			))}
 		</ScrollView>
@@ -95,7 +131,7 @@ const FoodImage = (props) => (
 			style={{
 				width: 100,
 				height: 100,
-				orderRadius: 8
+				borderRadius: 8
 			}}
 		/>
 	</View>
