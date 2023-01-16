@@ -56,9 +56,10 @@ const foods = [
 export default function MenuItems(restaurantName) {
 
 	const dispatch = useDispatch()
+
 	const selectItem = (item, checkboxValue) =>
 		dispatch({
-			type: "ADD_TO:_CART",
+			type: "ADD_TO_CART",
 			payload: {
 				...item,
 				restaurantName: restaurantName,
@@ -66,15 +67,13 @@ export default function MenuItems(restaurantName) {
 			}
 		})
 
-	const cartItems = useSelector
-		(state => state.cartReducer.selectedItems.items
-		)
+	const cartItems = useSelector(state => state.cartReducer.selectedItems.items)
 
 	const isFoodInCart = (food, cartItems) =>
 		Boolean(cartItems.find((item) => item.title == food.title))
 
-	const checkLog = (food, cartItems) =>
-		console.log(food)
+	const printLog = (checkboxValue) =>
+		console.log(checkboxValue)
 
 	return (
 		<ScrollView showsVerticalScrollIndicator={false}>
@@ -84,10 +83,11 @@ export default function MenuItems(restaurantName) {
 						<BouncyCheckbox
 							iconStyle={{
 								marginLeft: -15,
-								borderColor: "lightgray"
+								borderColor: "lightgray",
+								//borderRadius: 0 
 							}}
 							fillColor="green"
-							isChecked={checkLog(food, cartItems)}
+							isChecked={isFoodInCart(food, cartItems)}
 							onPress={(checkboxValue) => selectItem(food, checkboxValue)}
 						/>
 						<FoodInfo food={food} />
