@@ -3,9 +3,9 @@ import React from 'react'
 
 export default function About(props) {
     const { name, image, price, reviews, rating, categories } = props.route.params
-    
+
     const formattedCategories = categories.map((categories) => categories).join(" • ")
-    
+
     const description = `${formattedCategories} ${price ? " • " + price : ""
         } • 🎫 • ${rating} ⭐ (${reviews}+)`
 

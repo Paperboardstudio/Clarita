@@ -7,25 +7,11 @@ import { useDispatch, useSelector } from 'react-redux'
 
 const foods = [
 	{
-		title: "Lasagna",
-		description: "With butter lettuce, tomato and sauce bechamel",
-		price: "$13.50",
-		image:
-			"https://www.modernhoney.com/wp-content/uploads/2019/08/Classic-Lasagna-14-scaled.jpg",
-	},
-	{
 		title: "Tandoori Chicken",
 		description:
 			"Amazing Indian dish with tenderloin chicken off the sizzles 🔥",
 		price: "$19.20",
-		image: "https://i.ytimg.com/vi/BKxGodX9NGg/maxresdefault.jpg",
-	},
-	{
-		title: "Tandoori Chicken",
-		description:
-			"Amazing Indian dish with tenderloin chicken off the sizzles 🔥",
-		price: "$19.20",
-		image: "https://i.ytimg.com/vi/BKxGodX9NGg/maxresdefault.jpg",
+		image: "https://www.foodandwine.com/thmb/3Ng4S6sH9MQEj5Ho1cBkGw2alJ4=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/grilled-tandoori-chicken-FT-RECIPE1021-a61b1a767cb74c3c976c85799a378968.jpg",
 	},
 	{
 		title: "Chilaquiles",
@@ -33,7 +19,7 @@ const foods = [
 			"Chilaquiles with cheese and sauce. A delicious mexican dish 🇲🇽",
 		price: "$14.50",
 		image:
-			"https://i2.wp.com/chilipeppermadness.com/wp-content/uploads/2020/11/Chilaquales-Recipe-Chilaquiles-Rojos-1.jpg",
+			"https://i.ytimg.com/vi/Q6fPc31xsjs/maxresdefault.jpg",
 	},
 	{
 		title: "Chicken Caesar Salad",
@@ -41,18 +27,24 @@ const foods = [
 			"One can never go wrong with a chicken caesar salad. Healthy option with greens and proteins!",
 		price: "$21.50",
 		image:
-			"https://images.themodernproper.com/billowy-turkey/production/posts/2019/Easy-italian-salad-recipe-10.jpg?w=1200&h=1200&q=82&fm=jpg&fit=crop&fp-x=0.5&fp-y=0.5&dm=1614096227&s=c0f63a30cef3334d97f9ecad14be51da",
+			"https://live.staticflickr.com/65535/49989397386_eb00d1c314_b.jpg",
 	},
 	{
 		title: "Lasagna",
 		description: "With butter lettuce, tomato and sauce bechamel",
 		price: "$13.50",
 		image:
-			"https://thestayathomechef.com/wp-content/uploads/2017/08/Most-Amazing-Lasagna-2-e1574792735811.jpg",
+			"https://www.modernhoney.com/wp-content/uploads/2019/08/Classic-Lasagna-14-scaled.jpg",
 	},
 ]
 
-//need to make sure there are enough food items for scroll functionallity to work
+/**
+ * View error need to fix
+ * Screen is bigger than it shows
+ * ViewCart button broken
+ * @param {*} restaurantName 
+ * @returns 
+ */
 export default function MenuItems(restaurantName) {
 
 	const dispatch = useDispatch()
@@ -71,9 +63,6 @@ export default function MenuItems(restaurantName) {
 
 	const isFoodInCart = (food, cartItems) =>
 		Boolean(cartItems.find((item) => item.title == food.title))
-
-	const printLog = (checkboxValue) =>
-		console.log(checkboxValue)
 
 	return (
 		<ScrollView showsVerticalScrollIndicator={false}>
@@ -100,6 +89,9 @@ export default function MenuItems(restaurantName) {
 					/>
 				</View>
 			))}
+			<View style={{
+				padding: 150
+			 }}></View>
 		</ScrollView>
 	)
 }

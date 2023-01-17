@@ -37,12 +37,12 @@ export default function
                             marginRight: 8,
                             backgroundColor: "white",
                             padding: 9,
-                            borderRadius:30,
+                            borderRadius: 30,
                             alignItems: "center"
                         }
                     }
                     >
-                        <AntDesign name="clockcircle" size={11} style={{marginRight: 6 }}
+                        <AntDesign name="clockcircle" size={11} style={{ marginRight: 6 }}
                         />
                         <Text>Search</Text>
                     </View>
