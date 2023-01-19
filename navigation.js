@@ -1,4 +1,3 @@
-<script src="http://localhost:8097"></script>
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
