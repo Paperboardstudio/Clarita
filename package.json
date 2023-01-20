@@ -13,7 +13,6 @@
     "@react-navigation/native": "^6.1.2",
     "@react-navigation/stack": "^6.3.11",
     "@rneui/themed": "^4.0.0-rc.7",
-    "firebase": "^9.15.0",
     "react": "18.1.0",
     "react-native": "0.70.6",
     "react-native-bouncy-checkbox": "^3.0.6",
