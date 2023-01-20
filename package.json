@@ -10,6 +10,8 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@react-native-firebase/app": "^16.5.0",
+    "@react-native-firebase/firestore": "^16.5.1",
     "@react-navigation/native": "^6.1.2",
     "@react-navigation/stack": "^6.3.11",
     "@rneui/themed": "^4.0.0-rc.7",

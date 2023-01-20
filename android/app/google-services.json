@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "192012543956",
+    "project_id": "rn-clarita-app",
+    "storage_bucket": "rn-clarita-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:192012543956:android:73a19ee8cf3b052e391841",
+        "android_client_info": {
+          "package_name": "com.rnfirstproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "192012543956-md39hn4vlruebfb9t8rvd6akr6f684kq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2uoGWxQm_rEfZedu2SR6Tnacf6tFCLnc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "192012543956-md39hn4vlruebfb9t8rvd6akr6f684kq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

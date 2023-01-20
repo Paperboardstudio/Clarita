@@ -3,6 +3,7 @@ import React from 'react'
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import OrderItem from './OrderItem'
+import firestore from '@react-native-firebase/firestore';
 
 
 export default function ViewCart() {
@@ -19,6 +20,21 @@ export default function ViewCart() {
         style: "currency",
         currency: "USD",
     })
+
+    console.log("step 1")
+    const addOrderToFireBase = () => {
+        console.log("step 2")
+        firestore().collection("orders")
+            .add({
+                items: items,
+                restaurantName: restaurantName,
+                createdAt: firestore.FieldValue.serverTimestamp(),
+            })
+            .then(() => {
+                console.log('Item added!')
+            })
+        setModalVisible(false)
+    }
 
     const styles = StyleSheet.create({
         modalContainer: {
@@ -81,7 +97,7 @@ export default function ViewCart() {
                                     position: "relative",
                                 }}
                                 onPress={() => {
-                                    setModalVisible(false);
+                                    addOrderToFireBase()
                                 }}
                             >
                                 <Text style={{ color: "white", fontSize: 20 }}>Checkout</Text>
