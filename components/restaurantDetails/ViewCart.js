@@ -4,14 +4,15 @@ import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import OrderItem from './OrderItem'
 import firestore from '@react-native-firebase/firestore';
+import AnimatedLottieView from 'lottie-react-native'
 
-
-export default function ViewCart() {
+export default function ViewCart({ navigation }) {
     const [modalVisible, setModalVisible] = useState(false)
+    const [loading, setLoading] = useState(false);
+
     const { items, restaurantName } = useSelector(
         (state) => state.cartReducer.selectedItems)
 
-    console.log(restaurantName)
     const total = items
         .map((item) => Number(item.price.replace("$", "")))
         .reduce((prev, curr) => prev + curr, 0)
@@ -21,9 +22,8 @@ export default function ViewCart() {
         currency: "USD",
     })
 
-    console.log("step 1")
     const addOrderToFireBase = () => {
-        console.log("step 2")
+        setLoading(true)
         firestore().collection("orders")
             .add({
                 items: items,
@@ -31,10 +31,12 @@ export default function ViewCart() {
                 createdAt: firestore.FieldValue.serverTimestamp(),
             })
             .then(() => {
-                console.log('Item added!')
-            })
-        setModalVisible(false)
-    }
+                setTimeout(() => {
+                    setLoading(false)
+                    navigation.navigate("OrderCompleted");
+                }, 2500);
+            });
+    };
 
     const styles = StyleSheet.create({
         modalContainer: {
@@ -98,6 +100,7 @@ export default function ViewCart() {
                                 }}
                                 onPress={() => {
                                     addOrderToFireBase()
+                                    setModalVisible(false)
                                 }}
                             >
                                 <Text style={{ color: "white", fontSize: 20 }}>Checkout</Text>
@@ -168,6 +171,28 @@ export default function ViewCart() {
                             <Text style={{ color: "white", fontSize: 18 }}>{totalUSD}</Text>
                         </TouchableOpacity>
                     </View>
+                </View>
+            ) : (
+                <></>
+            )}
+            {loading ? (
+                <View
+                    style={{
+                        backgroundColor: "black",
+                        position: "absolute",
+                        opacity: 0.6,
+                        justifyContent: "center",
+                        alignItems: "center",
+                        height: "100%",
+                        width: "100%",
+                    }}
+                >
+                    <AnimatedLottieView
+                        style={{ height: 200 }}
+                        source={require("../../assets/animations/scanner.json")}
+                        autoPlay
+                        speed={3}
+                    />
                 </View>
             ) : (
                 <></>

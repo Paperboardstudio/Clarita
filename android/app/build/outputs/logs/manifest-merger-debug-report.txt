@@ -10,6 +10,7 @@ MERGED from [com.facebook.flipper:flipper-network-plugin:0.125.0] C:\Users\stefa
 MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.125.0] C:\Users\stefa\.gradle\caches\transforms-3\0309eaa86938eb5ff5694657217d7d3a\transformed\jetified-flipper-fresco-plugin-0.125.0\AndroidManifest.xml:8:1-15:12
 MERGED from [:react-native-firebase_firestore] O:\Programming\Clarita\node_modules\@react-native-firebase\firestore\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-firebase_app] O:\Programming\Clarita\node_modules\@react-native-firebase\app\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-32:12
+MERGED from [:lottie-react-native] O:\Programming\Clarita\node_modules\lottie-react-native\src\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-gesture-handler] O:\Programming\Clarita\node_modules\react-native-gesture-handler\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-safe-area-context] O:\Programming\Clarita\node_modules\react-native-safe-area-context\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-screens] O:\Programming\Clarita\node_modules\react-native-screens\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
@@ -35,6 +36,7 @@ MERGED from [com.facebook.fresco:nativeimagetranscoder:2.6.0] C:\Users\stefa\.gr
 MERGED from [com.facebook.fresco:imagepipeline-base:2.6.0] C:\Users\stefa\.gradle\caches\transforms-3\e5d54b4664b86c0bdb55055014d48383\transformed\jetified-imagepipeline-base-2.6.0\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.firebase:firebase-firestore:24.4.1] C:\Users\stefa\.gradle\caches\transforms-3\7f1b88995def0a686058259886953fdd\transformed\jetified-firebase-firestore-24.4.1\AndroidManifest.xml:2:1-25:12
 MERGED from [io.grpc:grpc-android:1.50.2] C:\Users\stefa\.gradle\caches\transforms-3\912c467ae4d769651f197431fba7f17a\transformed\jetified-grpc-android-1.50.2\AndroidManifest.xml:2:1-11:12
+MERGED from [com.airbnb.android:lottie:5.1.1] C:\Users\stefa\.gradle\caches\transforms-3\ae38d1f6a749eeadf1b46fb69ed18fe3\transformed\jetified-lottie-5.1.1\AndroidManifest.xml:2:1-11:12
 MERGED from [com.google.android.material:material:1.1.0] C:\Users\stefa\.gradle\caches\transforms-3\0d1cfdcc191390bf79cf28fe48b6f226\transformed\material-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.appcompat:appcompat:1.4.1] C:\Users\stefa\.gradle\caches\transforms-3\e2a06fbf1db0940d3045823cb1a36aed\transformed\appcompat-1.4.1\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.sqlite:sqlite-framework:2.1.0] C:\Users\stefa\.gradle\caches\transforms-3\85bcf7cb456d96d4395b3b331758c9ba\transformed\sqlite-framework-2.1.0\AndroidManifest.xml:17:1-24:12
@@ -111,6 +113,8 @@ uses-permission#android.permission.INTERNET
 ADDED from O:\Programming\Clarita\android\app\src\main\AndroidManifest.xml:4:5-67
 MERGED from [com.facebook.flipper:flipper:0.125.0] C:\Users\stefa\.gradle\caches\transforms-3\4579d77217e00b3eb1409e4f5131b607\transformed\jetified-flipper-0.125.0\AndroidManifest.xml:15:5-67
 MERGED from [com.facebook.flipper:flipper:0.125.0] C:\Users\stefa\.gradle\caches\transforms-3\4579d77217e00b3eb1409e4f5131b607\transformed\jetified-flipper-0.125.0\AndroidManifest.xml:15:5-67
+MERGED from [:lottie-react-native] O:\Programming\Clarita\node_modules\lottie-react-native\src\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-67
+MERGED from [:lottie-react-native] O:\Programming\Clarita\node_modules\lottie-react-native\src\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-67
 MERGED from [com.google.firebase:firebase-firestore:24.4.1] C:\Users\stefa\.gradle\caches\transforms-3\7f1b88995def0a686058259886953fdd\transformed\jetified-firebase-firestore-24.4.1\AndroidManifest.xml:13:5-67
 MERGED from [com.google.firebase:firebase-firestore:24.4.1] C:\Users\stefa\.gradle\caches\transforms-3\7f1b88995def0a686058259886953fdd\transformed\jetified-firebase-firestore-24.4.1\AndroidManifest.xml:13:5-67
 	android:name
@@ -127,6 +131,8 @@ MERGED from [com.facebook.soloader:soloader:0.10.4] C:\Users\stefa\.gradle\cache
 MERGED from [com.facebook.soloader:soloader:0.10.4] C:\Users\stefa\.gradle\caches\transforms-3\2bf69de1156156ab69787107dfe06526\transformed\jetified-soloader-0.10.4\AndroidManifest.xml:11:5-20
 MERGED from [com.google.firebase:firebase-firestore:24.4.1] C:\Users\stefa\.gradle\caches\transforms-3\7f1b88995def0a686058259886953fdd\transformed\jetified-firebase-firestore-24.4.1\AndroidManifest.xml:15:5-23:19
 MERGED from [com.google.firebase:firebase-firestore:24.4.1] C:\Users\stefa\.gradle\caches\transforms-3\7f1b88995def0a686058259886953fdd\transformed\jetified-firebase-firestore-24.4.1\AndroidManifest.xml:15:5-23:19
+MERGED from [com.airbnb.android:lottie:5.1.1] C:\Users\stefa\.gradle\caches\transforms-3\ae38d1f6a749eeadf1b46fb69ed18fe3\transformed\jetified-lottie-5.1.1\AndroidManifest.xml:9:5-20
+MERGED from [com.airbnb.android:lottie:5.1.1] C:\Users\stefa\.gradle\caches\transforms-3\ae38d1f6a749eeadf1b46fb69ed18fe3\transformed\jetified-lottie-5.1.1\AndroidManifest.xml:9:5-20
 MERGED from [com.google.android.material:material:1.1.0] C:\Users\stefa\.gradle\caches\transforms-3\0d1cfdcc191390bf79cf28fe48b6f226\transformed\material-1.1.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.1.0] C:\Users\stefa\.gradle\caches\transforms-3\0d1cfdcc191390bf79cf28fe48b6f226\transformed\material-1.1.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.gms:play-services-auth:20.3.0] C:\Users\stefa\.gradle\caches\transforms-3\750928b5e5c17b1e3fffc3d09843a966\transformed\jetified-play-services-auth-20.3.0\AndroidManifest.xml:22:5-38:19
@@ -217,6 +223,8 @@ MERGED from [:react-native-firebase_firestore] O:\Programming\Clarita\node_modul
 MERGED from [:react-native-firebase_firestore] O:\Programming\Clarita\node_modules\@react-native-firebase\firestore\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-firebase_app] O:\Programming\Clarita\node_modules\@react-native-firebase\app\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:6:5-8:41
 MERGED from [:react-native-firebase_app] O:\Programming\Clarita\node_modules\@react-native-firebase\app\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:6:5-8:41
+MERGED from [:lottie-react-native] O:\Programming\Clarita\node_modules\lottie-react-native\src\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:lottie-react-native] O:\Programming\Clarita\node_modules\lottie-react-native\src\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-gesture-handler] O:\Programming\Clarita\node_modules\react-native-gesture-handler\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-gesture-handler] O:\Programming\Clarita\node_modules\react-native-gesture-handler\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-safe-area-context] O:\Programming\Clarita\node_modules\react-native-safe-area-context\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
@@ -267,6 +275,8 @@ MERGED from [com.google.firebase:firebase-firestore:24.4.1] C:\Users\stefa\.grad
 MERGED from [com.google.firebase:firebase-firestore:24.4.1] C:\Users\stefa\.gradle\caches\transforms-3\7f1b88995def0a686058259886953fdd\transformed\jetified-firebase-firestore-24.4.1\AndroidManifest.xml:6:5-8:41
 MERGED from [io.grpc:grpc-android:1.50.2] C:\Users\stefa\.gradle\caches\transforms-3\912c467ae4d769651f197431fba7f17a\transformed\jetified-grpc-android-1.50.2\AndroidManifest.xml:5:5-7:41
 MERGED from [io.grpc:grpc-android:1.50.2] C:\Users\stefa\.gradle\caches\transforms-3\912c467ae4d769651f197431fba7f17a\transformed\jetified-grpc-android-1.50.2\AndroidManifest.xml:5:5-7:41
+MERGED from [com.airbnb.android:lottie:5.1.1] C:\Users\stefa\.gradle\caches\transforms-3\ae38d1f6a749eeadf1b46fb69ed18fe3\transformed\jetified-lottie-5.1.1\AndroidManifest.xml:5:5-7:41
+MERGED from [com.airbnb.android:lottie:5.1.1] C:\Users\stefa\.gradle\caches\transforms-3\ae38d1f6a749eeadf1b46fb69ed18fe3\transformed\jetified-lottie-5.1.1\AndroidManifest.xml:5:5-7:41
 MERGED from [com.google.android.material:material:1.1.0] C:\Users\stefa\.gradle\caches\transforms-3\0d1cfdcc191390bf79cf28fe48b6f226\transformed\material-1.1.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.material:material:1.1.0] C:\Users\stefa\.gradle\caches\transforms-3\0d1cfdcc191390bf79cf28fe48b6f226\transformed\material-1.1.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.appcompat:appcompat:1.4.1] C:\Users\stefa\.gradle\caches\transforms-3\e2a06fbf1db0940d3045823cb1a36aed\transformed\appcompat-1.4.1\AndroidManifest.xml:20:5-22:41
