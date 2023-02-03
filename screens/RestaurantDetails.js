@@ -39,7 +39,7 @@ const foods = [
 ]
 export default function RestaurantDetails({ route, navigation }) {
     return (
-        <View>
+        <View style = {{flex:1}}>
             <About route={route} />
             <Divider width={1.8} style={{ marginVertical: 20 }} />
             <MenuItems restaurantName={route.params.name} foods={foods} />

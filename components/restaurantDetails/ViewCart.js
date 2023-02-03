@@ -71,12 +71,56 @@ export default function ViewCart({ navigation }) {
             fontSize: 15,
             marginBottom: 10,
         },
+        orderButton: {
+            marginTop: 20,
+            backgroundColor: "black",
+            alignItems: "center",
+            padding: 13,
+            borderRadius: 30,
+            width: 300,
+            position: "relative",
+        },
+        orderButtonText: {
+            position: "absolute",
+            right: 20,
+            color: "white",
+            fontSize: 15,
+            top: 17,
+        },
+        orderButtonView: {
+            flexDirection: "row",
+            justifyContent: "center"
+        },
+
+        checkoutButton: {
+            color: "white",
+            fontSize: 20
+        },
+        viewcartButtonView:{
+            flex: 1,
+            alignItems: 'center',
+            flexDirection: 'row',
+            bottom: 40,
+            zIndex: 999,
+        },
+        viewcartButton:{
+            marginTop: 20,
+            backgroundColor: 'black',
+            flexDirection: "row",
+            alignItems: 'center',
+            justifyContent: "flex-end",
+            padding: 8,
+            borderRadius: 30,
+            height: 40,
+            width: 250,
+            position: 'relative',
+        }
+        
     })
 
     const checkoutModalContent = () => {
         return (
             <>
-
                 <View style={styles.modalContainer}>
                     <View style={styles.modalCheckoutContainer}>
                         <Text style={styles.restaurantName}>{restaurantName.restaurantName}</Text>
@@ -87,31 +131,17 @@ export default function ViewCart({ navigation }) {
                             <Text style={styles.subtotalText}>Subtotal</Text>
                             <Text>{totalUSD}</Text>
                         </View>
-                        <View style={{ flexDirection: "row", justifyContent: "center" }}>
+                        <View style={styles.orderButtonView}>
                             <TouchableOpacity
-                                style={{
-                                    marginTop: 20,
-                                    backgroundColor: "black",
-                                    alignItems: "center",
-                                    padding: 13,
-                                    borderRadius: 30,
-                                    width: 300,
-                                    position: "relative",
-                                }}
+                                style={styles.orderButton}
                                 onPress={() => {
                                     addOrderToFireBase()
                                     setModalVisible(false)
                                 }}
                             >
-                                <Text style={{ color: "white", fontSize: 20 }}>Checkout</Text>
+                                <Text style={styles.checkoutButton}>Checkout</Text>
                                 <Text
-                                    style={{
-                                        position: "absolute",
-                                        right: 20,
-                                        color: "white",
-                                        fontSize: 15,
-                                        top: 17,
-                                    }}
+                                    style={styles.orderButtonText}
                                 >
                                     {total ? totalUSD : ""}
                                 </Text>
@@ -135,35 +165,16 @@ export default function ViewCart({ navigation }) {
             </Modal>
             {total ? (
                 <View
-                    style={{
-                        flex: 1,
-                        alignItems: 'center',
-                        flexDirection: 'row',
-                        position: 'absolute',
-                        bottom: 320,
-                        zIndex: 999,
-                    }}
+                    style={styles.viewcartButtonView}
                 >
                     <View
                         style={{
                             flexDirection: 'row',
                             justifyContent: 'center',
-                            width: '100%',
                         }}
                     >
                         <TouchableOpacity
-                            style={{
-                                marginTop: 20,
-                                backgroundColor: 'black',
-                                flexDirection: "row",
-                                alignItems: 'center',
-                                justifyContent: "flex-end",
-                                padding: 8,
-                                borderRadius: 30,
-                                height: 40,
-                                width: 250,
-                                position: 'relative',
-                            }}
+                            style={styles.viewcartButton}
                             onPress={() => setModalVisible(true)}
                         >
                             <Text style={{ color: "white", fontSize: 18, marginRight: 30 }}>

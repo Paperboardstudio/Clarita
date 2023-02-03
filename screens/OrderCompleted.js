@@ -54,7 +54,7 @@ export default function OrderCompleted() {
         style={{
           margin: 15,
           alignItems: "center",
-          height: "100%",
+          height: "98%",
         }}
       >
         <AnimatedLottieView

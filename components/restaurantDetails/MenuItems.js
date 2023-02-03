@@ -60,9 +60,6 @@ export default function MenuItems({ restaurantName, foods, hideCheckbox, marginL
 					/>
 				</View>
 			))}
-			<View style={{
-				padding: 150
-			}}></View>
 		</ScrollView>
 	)
 }
