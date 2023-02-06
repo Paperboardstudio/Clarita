@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux'
 import OrderItem from './OrderItem'
 import firestore from '@react-native-firebase/firestore';
 import AnimatedLottieView from 'lottie-react-native'
+import auth from '@react-native-firebase/auth';
 
 export default function ViewCart({ navigation }) {
     const [modalVisible, setModalVisible] = useState(false)
@@ -37,6 +38,12 @@ export default function ViewCart({ navigation }) {
                 }, 2500);
             });
     };
+
+    auth().onAuthStateChanged((user) => {
+        if (user) {
+            console.log('User email: ', user.email);
+        }
+    });
 
     const styles = StyleSheet.create({
         modalContainer: {

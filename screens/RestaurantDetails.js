@@ -4,6 +4,7 @@ import { Divider } from '@rneui/themed'
 import About from '../components/restaurantDetails/About'
 import MenuItems from '../components/restaurantDetails/MenuItems'
 import ViewCart from '../components/restaurantDetails/ViewCart'
+import auth from '@react-native-firebase/auth';
 
 const foods = [
 	{
@@ -38,12 +39,17 @@ const foods = [
 	},
 ]
 export default function RestaurantDetails({ route, navigation }) {
-    return (
-        <View style = {{flex:1}}>
-            <About route={route} />
-            <Divider width={1.8} style={{ marginVertical: 20 }} />
-            <MenuItems restaurantName={route.params.name} foods={foods} />
-            <ViewCart navigation={navigation} />
-        </View>
-    )
+	auth().onAuthStateChanged((user) => {
+		if (user) {
+			console.log('User email: ', user.email);
+		}
+	});
+	return (
+		<View style={{ flex: 1 }}>
+			<About route={route} />
+			<Divider width={1.8} style={{ marginVertical: 20 }} />
+			<MenuItems restaurantName={route.params.name} foods={foods} />
+			<ViewCart navigation={navigation} />
+		</View>
+	)
 }
