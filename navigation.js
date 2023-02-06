@@ -1,5 +1,4 @@
-<script src="http://localhost:8097"></script>
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import { createStackNavigator } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
 import Home from "./screens/Home"
@@ -7,10 +6,15 @@ import RestaurantDetails from "./screens/RestaurantDetails"
 import { Provider as ReduxProvider } from 'react-redux'
 import configureStore from './redux/store'
 import OrderCompleted from './screens/OrderCompleted'
+import Login from './firebase/Login'
+import Register from './firebase/Register'
+import UserSelect from './firebase/UserSelect';
+import Account from './firebase/Account';
 
 const store = configureStore();
 
 export default function RootNavigation() {
+
     const Stack = createStackNavigator();
 
     const screenOptions = {
@@ -24,6 +28,10 @@ export default function RootNavigation() {
                     <Stack.Screen name='Home' component={Home} />
                     <Stack.Screen name='RestaurantDetails' component={RestaurantDetails} />
                     <Stack.Screen name='OrderCompleted' component={OrderCompleted} />
+                    <Stack.Screen name='Login' component={Login} />
+                    <Stack.Screen name='Register' component={Register} />
+                    <Stack.Screen name='UserSelect' component={UserSelect} />
+                    <Stack.Screen name='Account' component={Account} />
                 </Stack.Navigator>
             </NavigationContainer>
         </ReduxProvider>

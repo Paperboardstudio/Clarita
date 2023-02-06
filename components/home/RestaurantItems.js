@@ -1,6 +1,7 @@
 import { View, Text, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import auth from '@react-native-firebase/auth';
 
 export const localRestaurants = [
     {
@@ -33,6 +34,12 @@ export const localRestaurants = [
 ];
 
 export default function RestaurantItems({ navigation, ...props }) {
+
+    auth().onAuthStateChanged((user) => {
+        if (user) {
+            console.log('User email: ', user.email);
+        }
+    });
     return (
         <>
             {props.restaurantData.map((restaurant, index) => (

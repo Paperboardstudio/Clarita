@@ -1,8 +1,9 @@
 import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5"
+import auth from '@react-native-firebase/auth';
 
-export default function BottomTabs() {
+export default function BottomTabs({ navigation }) {
     return (
         <View
             style={{
@@ -16,21 +17,24 @@ export default function BottomTabs() {
             {<Icon icon="search" text="Browse" />}
             {<Icon icon="shopping-bag" text="Grocery" />}
             {<Icon icon="receipt" text="Orders" />}
-            {<Icon icon="user" text="Account" />}
+            <TouchableOpacity
+                onPress={() => {
+                    navigation.navigate("UserSelect")
+                }}>
+                {<Icon icon="user" text="Account" />}
+            </TouchableOpacity>
         </View>
     )
 }
 
 const Icon = (props) => (
-    <TouchableOpacity>
-        <View>
-            <FontAwesome5 name={props.icon} size={25}
-                style={{
-                    marginBottom: 3,
-                    alignSelf: "center"
-                }}
-            />
-            <Text>{props.text}</Text>
-        </View>
-    </TouchableOpacity>
+    <View>
+        <FontAwesome5 name={props.icon} size={25}
+            style={{
+                marginBottom: 3,
+                alignSelf: "center"
+            }}
+        />
+        <Text>{props.text}</Text>
+    </View>
 )
