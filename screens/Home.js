@@ -31,11 +31,6 @@ export default function Home({ navigation }) {
 				)
 			);
 	};
-	// This is used for the Google Places Search API
-	// We are not using it and is to be deleted
-	/*useEffect(()=> {
-	  getRestaurantsFromYelp();
-	}, []);*/
 
 	return (
 		<SafeAreaView style={{ backgroundColor: "#eee", flex: 1 }}>

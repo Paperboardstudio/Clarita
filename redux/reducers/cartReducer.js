@@ -14,12 +14,13 @@ let cartReducer = (state = defaultState, action) => {
           items: [...newState.selectedItems.items, action.payload],
           restaurantName: action.payload.restaurantName,
         };
-      } else {
+      } 
+      else {
         console.log("REMOVE FROM CART");
         newState.selectedItems = {
           items: [
             ...newState.selectedItems.items.filter(
-              (item) => item.title !== action.payload.title
+              (item) => item.name !== action.payload.name
             ),
           ],
           restaurantName: action.payload.restaurantName,

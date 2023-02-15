@@ -1,7 +1,6 @@
 import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5"
-import auth from '@react-native-firebase/auth';
 
 export default function BottomTabs({ navigation }) {
     return (
