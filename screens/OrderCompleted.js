@@ -7,17 +7,7 @@ import MenuItems from "../components/restaurantDetails/MenuItems";
 
 export default function OrderCompleted() {
     //needs to be updated
-    const [lastOrder, setLastOrder] = useState({
-        items: [
-            {
-                name: "Bologna",
-                description: "With butter lettuce, tomato and sauce bechamel",
-                price: "$13.50",
-                image:
-                    "https://www.modernhoney.com/wp-content/uploads/2019/08/Classic-Lasagna-14-scaled.jpg",
-            },
-        ],
-    });
+    const [lastOrder, setLastOrder] = useState({ items: [] });
 
     const { items, restaurantName } = useSelector(
         (state) => state.cartReducer.selectedItems)
@@ -32,17 +22,17 @@ export default function OrderCompleted() {
     });
 
     useEffect(() => {
-        const unsubscribe =
-            firestore()
-                .collection("orders")
-                .orderBy("createdAt", "desc")
-                .limit(1)
-                .onSnapshot((snapshot) => {
-                    snapshot.docs.map((doc) => {
-                        setLastOrder(doc.data());
-                    });
+        const unsubscribe = firestore()
+            .collection("orders")
+            .orderBy("createdAt", "desc")
+            .limit(1)
+            .onSnapshot(snapshot => {
+                snapshot.docs.forEach(doc => {
+                    const items = Object.entries(doc.data().items).map(([key, value]) => [key, value]);
+                    setLastOrder({ items });
                 });
-        return () => unsubscribe();
+            });
+        return unsubscribe;
     }, []);
 
     return (
