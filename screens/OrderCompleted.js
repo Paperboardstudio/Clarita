@@ -4,25 +4,13 @@ import { useSelector } from "react-redux";
 import AnimatedLottieView from "lottie-react-native";
 import firestore from '@react-native-firebase/firestore'
 import MenuItems from "../components/restaurantDetails/MenuItems";
-import auth from '@react-native-firebase/auth';
 
 export default function OrderCompleted() {
     //needs to be updated
-    const [lastOrder, setLastOrder] = useState({
-        items: [
-            {
-                title: "Bologna",
-                description: "With butter lettuce, tomato and sauce bechamel",
-                price: "$13.50",
-                image:
-                    "https://www.modernhoney.com/wp-content/uploads/2019/08/Classic-Lasagna-14-scaled.jpg",
-            },
-        ],
-    });
+    const [lastOrder, setLastOrder] = useState({ items: [] });
 
     const { items, restaurantName } = useSelector(
-        (state) => state.cartReducer.selectedItems
-    );
+        (state) => state.cartReducer.selectedItems)
 
     const total = items
         .map((item) => Number(item.price.replace("$", "")))
@@ -34,28 +22,21 @@ export default function OrderCompleted() {
     });
 
     useEffect(() => {
-        const unsubscribe =
-            firestore().collection("orders")
-                .orderBy("createdAt", "desc")
-                .limit(1)
-                .onSnapshot((snapshot) => {
-                    snapshot.docs.map((doc) => {
-                        setLastOrder(doc.data());
-                    });
+        const unsubscribe = firestore()
+            .collection("orders")
+            .orderBy("createdAt", "desc")
+            .limit(1)
+            .onSnapshot(snapshot => {
+                snapshot.docs.forEach(doc => {
+                    const items = Object.entries(doc.data().items).map(([key, value]) => [key, value]);
+                    setLastOrder({ items });
                 });
-
-        return () => unsubscribe();
+            });
+        return unsubscribe;
     }, []);
-
-    auth().onAuthStateChanged((user) => {
-        if (user) {
-            console.log('User email: ', user.email);
-        }
-    });
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
-
             <View
                 style={{
                     margin: 15,

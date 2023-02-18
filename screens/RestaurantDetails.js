@@ -1,12 +1,12 @@
 import { View, Text } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Divider } from '@rneui/themed'
 import About from '../components/restaurantDetails/About'
 import MenuItems from '../components/restaurantDetails/MenuItems'
 import ViewCart from '../components/restaurantDetails/ViewCart'
-import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 
-const foods = [
+/*const foods = [
 	{
 		title: "Tandoori Chicken",
 		description:
@@ -37,19 +37,28 @@ const foods = [
 		image:
 			"https://www.modernhoney.com/wp-content/uploads/2019/08/Classic-Lasagna-14-scaled.jpg",
 	},
-]
+]*/
 export default function RestaurantDetails({ route, navigation }) {
-	auth().onAuthStateChanged((user) => {
-		if (user) {
-			console.log('User email: ', user.email);
-		}
-	});
+	const [menuData, setMenuData] = useState([]);
+
+	useEffect(() => {
+		firestore()
+			.collection('menus')
+			.doc('clarita-menu')
+			.get()
+			.then(documentSnapshot => {
+				if (documentSnapshot.exists) {
+					setMenuData(Object.entries(documentSnapshot.data()));
+				}
+			});
+	}, []);
+
 	return (
 		<View style={{ flex: 1 }}>
 			<About route={route} />
 			<Divider width={1.8} style={{ marginVertical: 20 }} />
-			<MenuItems restaurantName={route.params.name} foods={foods} />
+			<MenuItems restaurantName={route.params.name} foods={menuData} />
 			<ViewCart navigation={navigation} />
 		</View>
-	)
+	);
 }
