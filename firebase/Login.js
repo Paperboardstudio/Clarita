@@ -2,19 +2,12 @@ import { View, Text, TouchableOpacity, TextInput, StyleSheet } from 'react-nativ
 import React from 'react'
 import auth from '@react-native-firebase/auth';
 
+import styles from '../styles';
+
 export default function Login({ navigation }) {
 
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
-
-    const styles = StyleSheet.create({
-        input: {
-            height: 40,
-            margin: 12,
-            borderWidth: 1,
-            padding: 10,
-        },
-    })
 
     const loginAccount = () => {
         auth()
@@ -36,7 +29,7 @@ export default function Login({ navigation }) {
     return (
         <View>
             <TextInput
-                style={styles.input}
+                style={styles.loginInput}
                 onChangeText={setEmail}
                 value={email}
                 placeholder="example@email.com"
@@ -44,7 +37,7 @@ export default function Login({ navigation }) {
                 textContentType='emailAddress'
             />
             <TextInput
-                style={styles.input}
+                style={styles.loginInput}
                 onChangeText={setPassword}
                 value={password}
                 placeholder="password"

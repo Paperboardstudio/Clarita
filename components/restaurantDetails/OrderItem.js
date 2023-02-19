@@ -1,20 +1,14 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
+
+import styles from "../../styles";
 
 export default function OrderItem({ item }) {
 	const { name, price } = item
 	return (
-		<View
-			style={{
-				flexDirection: "row",
-				justifyContent: "space-between",
-				padding: 20,
-				borderBottomWidth: 1,
-				borderBottomColor: "#999",
-			}}
-		>
-			<Text style={{ fontWeight: "600", fontSize: 16 }}>{name}</Text>
-			<Text style={{ opacity: 0.7, fontSize: 16 }}>{price}</Text>
+		<View style={styles.orderItemContainer}>
+			<Text style={styles.orderItemName}>{name}</Text>
+			<Text style={styles.orderItemPrice}>{price}</Text>
 		</View>
 	)
 }

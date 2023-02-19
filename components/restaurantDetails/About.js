@@ -1,6 +1,8 @@
 import { View, Text, Image } from 'react-native'
 import React from 'react'
 
+import styles from '../../styles'
+
 export default function About(props) {
     const { name, image, price, reviews, rating, categories } = props.route.params
 
@@ -11,46 +13,28 @@ export default function About(props) {
 
     return (
         <View>
-            {<RestaurantImage image={image} />}
-            {<RestaurantTitle name={name} />}
-            {<RestaurantDescription description={description} />}
+            <RestaurantImage image={image} />
+            <RestaurantTitle name={name} />
+            <RestaurantDescription description={description} />
         </View>
     )
 }
 
 const RestaurantImage = (props) => (
     <Image
-        source={{
-            uri: props.image
-        }}
-        style={{
-            width: "100%",
-            height: 180
-        }}
+        source={{ uri: props.image }}
+        style={styles.aboutRestaurantImage}
     />
 )
 
 const RestaurantTitle = (props) => (
-    <Text
-        style={{
-            fontSize: 29,
-            fontWeight: "600",
-            marginTop: 10,
-            marginHorizontal: 15,
-        }}>
+    <Text style={styles.aboutRestaurantTitle}>
         {props.name}
     </Text>
 )
 
 const RestaurantDescription = (props) => (
-    <Text
-        style={{
-            marginTop: 10,
-            marginHorizontal: 15,
-            fontWeight: "400",
-            fontSize: 15.5
-        }}
-    >
+    <Text style={styles.aboutRestaurantDescription}>
         {props.description}
     </Text>
 )

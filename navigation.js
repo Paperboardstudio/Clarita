@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
-import Home from "./screens/Home"
-import RestaurantDetails from "./screens/RestaurantDetails"
 import { Provider as ReduxProvider } from 'react-redux'
+
 import configureStore from './redux/store'
+
+import Home from "./screens/Home"
 import OrderCompleted from './screens/OrderCompleted'
 import Login from './firebase/Login'
 import Register from './firebase/Register'
 import UserSelect from './firebase/UserSelect';
 import Account from './firebase/Account';
+import RestaurantDetails from "./screens/RestaurantDetails"
 
 const store = configureStore();
 

@@ -11,15 +11,6 @@ export default function Register({ navigation }) {
     const [userName, setUserName] = React.useState('');
     const [userPhoneNumer, setUserPhoneNumber] = React.useState('');
 
-    const styles = StyleSheet.create({
-        input: {
-            height: 40,
-            margin: 12,
-            borderWidth: 1,
-            padding: 10,
-        },
-    })
-
     const registerAccount = () => {
         auth()
             .createUserWithEmailAndPassword(email, password)
@@ -36,33 +27,17 @@ export default function Register({ navigation }) {
             })
     }
 
-    /*const user = auth().currentUser;
-
-
-    const updateUserProfile = async () => {
-        try {
-            if (!user) throw new Error('User is not signed in');
-
-            await user.updateProfile({
-                displayName: "userName",
-                phoneNumber: "userPhoneNumer",
-            });
-        } catch (error) {
-            console.error(error);
-        }
-    };*/
-
     return (
         <View>
             <TextInput
-                style={styles.input}
+                style={styles.registerInput}
                 onChangeText={setEmail}
                 value={email}
                 placeholder="example@email.com"
                 keyboardType='email-address'
             />
             <TextInput
-                style={styles.input}
+                style={styles.registerInput}
                 onChangeText={setPassword}
                 value={password}
                 placeholder="password"

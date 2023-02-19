@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, SafeAreaView, ScrollView } from "react-native";
+import { View, Text, SafeAreaView, ScrollView, StyleSheet } from "react-native";
 import { useSelector } from "react-redux";
 import AnimatedLottieView from "lottie-react-native";
 import firestore from '@react-native-firebase/firestore'
+
 import MenuItems from "../components/restaurantDetails/MenuItems";
+import styles from "../styles";
 
 export default function OrderCompleted() {
-    //needs to be updated
     const [lastOrder, setLastOrder] = useState({ items: [] });
 
     const { items, restaurantName } = useSelector(
-        (state) => state.cartReducer.selectedItems)
+        (state) => state.cartReducer.selectedItems
+    );
 
     const total = items
         .map((item) => Number(item.price.replace("$", "")))
@@ -26,9 +28,12 @@ export default function OrderCompleted() {
             .collection("orders")
             .orderBy("createdAt", "desc")
             .limit(1)
-            .onSnapshot(snapshot => {
-                snapshot.docs.forEach(doc => {
-                    const items = Object.entries(doc.data().items).map(([key, value]) => [key, value]);
+            .onSnapshot((snapshot) => {
+                snapshot.docs.forEach((doc) => {
+                    const items = Object.entries(doc.data().items).map(([key, value]) => [
+                        key,
+                        value,
+                    ]);
                     setLastOrder({ items });
                 });
             });
@@ -36,23 +41,18 @@ export default function OrderCompleted() {
     }, []);
 
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
-            <View
-                style={{
-                    margin: 15,
-                    alignItems: "center",
-                    height: "100%",
-                }}
-            >
+        <SafeAreaView style={styles.orderCompletedContainer}>
+            <View style={styles.orderCompletedContent}>
                 <AnimatedLottieView
-                    style={{ height: 100, alignSelf: "center", marginBottom: 30 }}
+                    style={styles.orderCompletedCheckMark}
                     source={require("../assets/animations/check-mark.json")}
                     autoPlay
                     speed={0.5}
                     loop={false}
                 />
-                <Text style={{ fontSize: 20, fontWeight: "bold" }}>
-                    Your order at {restaurantName.restaurantName} has been placed for {totalUSD}
+                <Text style={styles.orderCompletedConfirmation}>
+                    Your order at {restaurantName.restaurantName} has been placed for{" "}
+                    {totalUSD}
                 </Text>
                 <ScrollView>
                     <MenuItems
@@ -61,7 +61,7 @@ export default function OrderCompleted() {
                         marginLeft={10}
                     />
                     <AnimatedLottieView
-                        style={{ height: 200, alignSelf: "center" }}
+                        style={styles.orderCompletedCooking}
                         source={require("../assets/animations/cooking.json")}
                         autoPlay
                         speed={0.5}
