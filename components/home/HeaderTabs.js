@@ -3,6 +3,11 @@ import { View, Text, TouchableOpacity } from 'react-native';
 
 import styles from "../../styles";
 
+/**
+ * CURRENTLY UNUSED (POSSIBLY WILL BE DELETED)
+ * Displays two clickable icons button at the top
+ * @returns Two clickable button when imported
+ */
 export default function HeaderTabs() {
   const [activeTab, setActiveTab] = useState('Delivery');
   return (

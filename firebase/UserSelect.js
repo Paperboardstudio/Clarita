@@ -2,6 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import auth from '@react-native-firebase/auth';
 
+/** 
+* 
+* @brief UserSelect component to handle user authentication and navigation
+* This component handles the user authentication and navigation based on the user's status.
+* If the user is logged in, it navigates to the Account page. Otherwise, it displays the Register and Login buttons.
+* @return {JSX.Element} UserSelect component JSX code
+*/
 export default function UserSelect({ navigation }) {
     // Set an initializing state whilst Firebase connects
     const [initializing, setInitializing] = useState(true);

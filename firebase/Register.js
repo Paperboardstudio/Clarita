@@ -3,8 +3,17 @@ import React, { useState } from 'react'
 import auth from '@react-native-firebase/auth';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { TextInput } from 'react-native';
-import { StyleSheet } from 'react-native';
 
+/**
+* 
+* @brief React component for registering a user account.
+* @param {Object} navigation - Object containing navigation functions.
+* @return {JSX.Element} Register component.
+* @details This component renders a form for the user to enter their email address and password,
+* and allows them to register an account using the Firebase auth library. Upon successful registration,
+* the user is redirected to the Account page. If an error occurs during registration, the appropriate error
+* message is logged to the console.
+*/
 export default function Register({ navigation }) {
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');

@@ -4,6 +4,12 @@ import RestaurantItems, { localRestaurants } from '../components/home/Restaurant
 import { Divider } from '@rneui/themed'
 import BottomTabs from '../components/home/BottomTabs'
 
+/**
+* 
+* @brief Home component for displaying restaurant items and bottom tabs navigation
+* @param {Object} navigation - Navigation object for React Navigation
+* @return {JSX.Element} Home screen view
+*/
 export default function Home({ navigation }) {
 	const [restaurantData, setRestaurantData] = useState(localRestaurants)
 

@@ -3,6 +3,12 @@ import { View, Text, Image, ScrollView } from "react-native";
 
 import styles from "../../styles";
 
+/**
+ * CURRENTLY UNUSED (POSSIBLY WILL BE DELETED)
+ * Displays icons at the top
+ * @param {*} 
+ * @returns Clickable icons when imported with different icons
+ */
 const items = [
     {
         image: require("../../assets/images/shopping-bag.png"),
