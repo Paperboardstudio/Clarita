@@ -6,41 +6,46 @@ import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplet
 
 import styles from '../../styles';
 
+/**
+ * CURRENTLY UNUSED (POSSIBLY WILL BE DELETED)
+ * Displays a search bar
+ * @returns a search bar that uses GooglePlaces to find restaurants in a area
+ */
 export default function SearchBar() {
-  return (
-    <View style={styles.searchBarContainer}>
-      <GooglePlacesAutocomplete
-        placeholder="Search"
-        styles={searchStyles}
-        renderLeftButton={() => (
-          <View style={styles.searchBarLeftButtonContainer}>
-            <Ionicons name="location-sharp" size={24} />
-          </View>
-        )}
-        renderRightButton={() => (
-          <View style={styles.searchBarRightButtonContainer}>
-            <AntDesign name="clockcircle" size={11} style={styles.searchBarClockIcon} />
-            <Text style={styles.searchBarRightButtonText}>Search</Text>
-          </View>
-        )}
-      />
-    </View>
-  );
+    return (
+        <View style={styles.searchBarContainer}>
+            <GooglePlacesAutocomplete
+                placeholder="Search"
+                styles={searchStyles}
+                renderLeftButton={() => (
+                    <View style={styles.searchBarLeftButtonContainer}>
+                        <Ionicons name="location-sharp" size={24} />
+                    </View>
+                )}
+                renderRightButton={() => (
+                    <View style={styles.searchBarRightButtonContainer}>
+                        <AntDesign name="clockcircle" size={11} style={styles.searchBarClockIcon} />
+                        <Text style={styles.searchBarRightButtonText}>Search</Text>
+                    </View>
+                )}
+            />
+        </View>
+    );
 }
 
 //this has not been added to styles.js
 const searchStyles = StyleSheet.create({
-  textInput: {
-    backgroundColor: "#eee",
-    borderRadius: 20,
-    fontWeight: "700",
-    marginTop: 7,
-  },
-  textInputContainer: {
-    backgroundColor: "#eee",
-    borderRadius: 50,
-    flexDirection: "row",
-    alignItems: "center",
-    marginRight: 10,
-  },
+    textInput: {
+        backgroundColor: "#eee",
+        borderRadius: 20,
+        fontWeight: "700",
+        marginTop: 7,
+    },
+    textInputContainer: {
+        backgroundColor: "#eee",
+        borderRadius: 50,
+        flexDirection: "row",
+        alignItems: "center",
+        marginRight: 10,
+    },
 });

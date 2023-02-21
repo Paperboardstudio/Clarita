@@ -13,6 +13,13 @@ import UserSelect from './firebase/UserSelect';
 import Account from './firebase/Account';
 import RestaurantDetails from "./screens/RestaurantDetails"
 
+/**
+* 
+* @function RootNavigation
+* @desc The RootNavigation component is responsible for defining the different screens and their corresponding components.
+* It also includes the configuration for the Redux store and the navigation container.
+* @returns {JSX.Element} The RootNavigation component
+*/
 const store = configureStore();
 
 export default function RootNavigation() {

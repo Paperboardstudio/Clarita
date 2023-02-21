@@ -9,6 +9,12 @@ import styles from '../../styles'
 
 import OrderItem from './OrderItem'
 
+/**
+* @function ViewCart
+* @description Component that displays the user's cart, allows them to view it, and checkout.
+* @param {object} navigation - Object used for navigation between screens.
+* @returns {JSX.Element} - Returns JSX code that renders a ViewCart component.
+*/
 export default function ViewCart({ navigation }) {
     const [modalVisible, setModalVisible] = useState(false)
     const [loading, setLoading] = useState(false);

@@ -7,6 +7,11 @@ import firestore from '@react-native-firebase/firestore'
 import MenuItems from "../components/restaurantDetails/MenuItems";
 import styles from "../styles";
 
+/**
+* 
+* @brief Component for displaying order completion confirmation and details.
+* @returns {JSX.Element} OrderCompleted screen view.
+*/
 export default function OrderCompleted() {
     const [lastOrder, setLastOrder] = useState({ items: [] });
 
