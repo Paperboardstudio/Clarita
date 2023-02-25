@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import Ionicons from "react-native-vector-icons/Ionicons";
-import AntDesign from "react-native-vector-icons/AntDesign";
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 
 import styles from '../../styles';
@@ -11,12 +11,12 @@ import styles from '../../styles';
  * Displays a search bar
  * @returns a search bar that uses GooglePlaces to find restaurants in a area
  */
-export default function SearchBar() {
+function SearchBar() {
     return (
         <View style={styles.searchBarContainer}>
             <GooglePlacesAutocomplete
                 placeholder="Search"
-                styles={searchStyles}
+                styles={styles.searchStyles}
                 renderLeftButton={() => (
                     <View style={styles.searchBarLeftButtonContainer}>
                         <Ionicons name="location-sharp" size={24} />
@@ -32,20 +32,4 @@ export default function SearchBar() {
         </View>
     );
 }
-
-//this has not been added to styles.js
-const searchStyles = StyleSheet.create({
-    textInput: {
-        backgroundColor: "#eee",
-        borderRadius: 20,
-        fontWeight: "700",
-        marginTop: 7,
-    },
-    textInputContainer: {
-        backgroundColor: "#eee",
-        borderRadius: 50,
-        flexDirection: "row",
-        alignItems: "center",
-        marginRight: 10,
-    },
-});
+export default SearchBar;

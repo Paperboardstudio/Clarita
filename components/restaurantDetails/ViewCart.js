@@ -1,128 +1,113 @@
-import { View, Text, TouchableOpacity, Modal, StyleSheet } from 'react-native'
-import React from 'react'
-import { useState } from 'react'
-import { useSelector } from 'react-redux'
+import React, { useState, useCallback, Alert } from 'react';
+import { Modal, Text, TouchableOpacity, View } from 'react-native';
+import { useSelector } from 'react-redux';
+import AnimatedLottieView from 'lottie-react-native';
 import firestore from '@react-native-firebase/firestore';
-import AnimatedLottieView from 'lottie-react-native'
 
-import styles from '../../styles'
+import styles from '../../styles';
+import OrderItem from './OrderItem';
 
-import OrderItem from './OrderItem'
+const CURRENCY = 'USD';
+const CHECKOUT_DELAY = 2500;
 
 /**
-* @function ViewCart
-* @description Component that displays the user's cart, allows them to view it, and checkout.
-* @param {object} navigation - Object used for navigation between screens.
-* @returns {JSX.Element} - Returns JSX code that renders a ViewCart component.
-*/
-export default function ViewCart({ navigation }) {
-    const [modalVisible, setModalVisible] = useState(false)
-    const [loading, setLoading] = useState(false);
+ * @function ViewCart
+ * @description Component that displays the user's cart, allows them to view it, and checkout.
+ * @param {object} navigation - Object used for navigation between screens.
+ * @returns {JSX.Element} - Returns JSX code that renders a ViewCart component.
+ */
+function ViewCart({ navigation }) {
+    const [isModalVisible, setIsModalVisible] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const { items, restaurantName } = useSelector(({ cartReducer }) => cartReducer.selectedItems);
 
-    const { items, restaurantName } = useSelector(
-        (state) => state.cartReducer.selectedItems)
+    const { total, currency } = items.reduce(
+        ({ total, currency }, { price }) => {
+            const itemCurrency = price.slice(0, 1);
+            const itemTotal = Number(price.replace(itemCurrency, ''));
+            return { total: total + itemTotal, currency: itemCurrency };
+        },
+        { total: 0, currency: null }
+    );
 
-    const total = items
-        .map((item) => Number(item.price.replace("$", "")))
-        .reduce((prev, curr) => prev + curr, 0)
+    const totalUSD = total.toLocaleString('en', { style: 'currency', currency: CURRENCY });
 
-    const totalUSD = total.toLocaleString("en", {
-        style: "currency",
-        currency: "USD",
-    })
-
-    const addOrderToFireBase = () => {
-        setLoading(true)
-        firestore().collection("orders")
-            .add({
-                items: items,
-                restaurantName: restaurantName,
-                createdAt: firestore.FieldValue.serverTimestamp(),
-            })
-            .then(() => {
-                setTimeout(() => {
-                    setLoading(false)
-                    navigation.navigate("OrderCompleted");
-                }, 2500);
+    const handleCheckout = useCallback(async () => {
+        setIsLoading(true);
+        try {
+            await firestore().collection('orders').add({
+                items,
+                restaurantName,
+                currency,
+                createdAt: firestore.FieldValue.serverTimestamp()
             });
-    };
+            setIsModalVisible(false);
+            navigation.navigate('OrderCompleted');
+        } catch (error) {
+            console.error(error);
+        } finally {
+            setIsLoading(false);
+        }
+    }, [items, restaurantName, currency, navigation]);
 
-    const checkoutModalContent = () => {
-        return (
-            <>
-                <View style={styles.modalContainer}>
-                    <View style={styles.modalCheckoutContainer}>
-                        <Text style={styles.modalRestaurantName}>{restaurantName.restaurantName}</Text>
-                        {items.map((item, index) => (
-                            <OrderItem key={index} item={item} />
-                        ))}
-                        <View style={styles.modalSubtotalContainer}>
-                            <Text style={styles.modalSubtotalText}>Subtotal</Text>
-                            <Text>{totalUSD}</Text>
-                        </View>
-                        <View style={styles.checkoutButtonView}>
-                            <TouchableOpacity
-                                style={styles.checkoutButton}
-                                onPress={() => {
-                                    addOrderToFireBase()
-                                    setModalVisible(false)
-                                }}
-                            >
-                                <Text style={styles.checkoutText}>Checkout</Text>
-                                <Text
-                                    style={styles.checkoutPrice}
-                                >
-                                    {total ? totalUSD : ""}
-                                </Text>
-                            </TouchableOpacity>
-                        </View>
-                    </View>
+    const renderCheckoutModal = () => (
+        <View style={styles.modalContainer}>
+            <View style={styles.modalCheckoutContainer}>
+                <Text style={styles.modalRestaurantName}>{restaurantName}</Text>
+                {items.map((item, index) => (
+                    <OrderItem key={index} item={item} />
+                ))}
+                <View style={styles.modalSubtotalContainer}>
+                    <Text style={styles.modalSubtotalText}>Subtotal</Text>
+                    <Text>{totalUSD}</Text>
                 </View>
-            </>
-        );
-    };
+                <View style={styles.checkoutButtonView}>
+                    <TouchableOpacity
+                        style={styles.checkoutButton}
+                        onPress={() => {
+                            handleCheckout();
+                            setIsModalVisible(false);
+                        }}>
+                        <Text style={styles.checkoutText}>Checkout</Text>
+                        <Text style={styles.checkoutPrice}>{total ? totalUSD : ''}</Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
+        </View>
+    );
 
     return (
         <>
             <Modal
-                animationType='slide'
-                visible={modalVisible}
+                animationType="slide"
+                visible={isModalVisible}
                 transparent={true}
-                onRequestClose={() => setModalVisible(false)}
-            >
-                {checkoutModalContent()}
+                onRequestClose={() => setIsModalVisible(false)}>
+                {renderCheckoutModal()}
             </Modal>
             {total ? (
                 <View style={styles.modalViewCartContainer}>
-                    <View
-                        style={styles.modalViewCartView}
-                    >
+                    <View style={styles.modalViewCartView}>
                         <TouchableOpacity
                             style={styles.modalViewCartButton}
-                            onPress={() => setModalVisible(true)}
-                        >
+                            onPress={() => setIsModalVisible(true)}>
                             <Text style={styles.modalViewCartText}>View Cart</Text>
                             <Text style={styles.modalViewCartPriceText}>{totalUSD}</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
-            ) : (
-                <></>
-            )}
-            {loading ? (
-                <View
-                    style={styles.modalLoadingContainer}
-                >
+            ) : null}
+            {isLoading ? (
+                <View style={styles.modalLoadingContainer}>
                     <AnimatedLottieView
                         style={styles.modalAnimation}
-                        source={require("../../assets/animations/scanner.json")}
+                        source={require('../../assets/animations/scanner.json')}
                         autoPlay
                         speed={3}
                     />
                 </View>
-            ) : (
-                <></>
-            )}
+            ) : null}
         </>
-    )
+    );
 }
+export default ViewCart;

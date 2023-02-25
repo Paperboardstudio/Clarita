@@ -1,19 +1,19 @@
-import { View, Text, Image, TouchableOpacity } from 'react-native'
-import React from 'react'
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import { View, Text, Image, TouchableOpacity } from 'react-native';
+import React from 'react';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import styles from "../../styles";
+import styles from '../../styles';
 
 export const localRestaurants = [
     {
-        name: "Clarita",
+        name: 'Clarita',
         image_url:
-            "https://static.onecms.io/wp-content/uploads/sites/9/2020/04/24/ppp-why-wont-anyone-rescue-restaurants-FT-BLOG0420.jpg",
-        categories: ["Spicy", "Delicious", "Latin"],
-        price: "$$",
+            'https://static.onecms.io/wp-content/uploads/sites/9/2020/04/24/ppp-why-wont-anyone-rescue-restaurants-FT-BLOG0420.jpg',
+        categories: ['Spicy', 'Delicious', 'Latin'],
+        price: '$$',
         reviews: 1244,
-        rating: 4.5,
-    },
+        rating: 4.5
+    }
 ];
 /**
 
@@ -23,7 +23,7 @@ Renders a list of restaurants
 @param {Array.<Object>} props.restaurantData - An array of restaurant data objects
 @returns {JSX.Element} - Restaurant list component
 */
-export default function RestaurantItems({ navigation, ...props }) {
+function RestaurantItems({ navigation, ...props }) {
     return (
         <>
             {props.restaurantData.map((restaurant, index) => (
@@ -31,15 +31,16 @@ export default function RestaurantItems({ navigation, ...props }) {
                     key={index}
                     activeOpacity={1}
                     style={styles.restaurantItemsContainer}
-                    onPress={() => navigation.navigate("RestaurantDetails", {
-                        name: restaurant.name,
-                        image: restaurant.image_url,
-                        categories: restaurant.categories,
-                        price: restaurant.price,
-                        reviews: restaurant.reviews,
-                        rating: restaurant.rating,
-                    })}
-                >
+                    onPress={() =>
+                        navigation.navigate('RestaurantDetails', {
+                            name: restaurant.name,
+                            image: restaurant.image_url,
+                            categories: restaurant.categories,
+                            price: restaurant.price,
+                            reviews: restaurant.reviews,
+                            rating: restaurant.rating
+                        })
+                    }>
                     <View style={styles.restaurantItemsInfoContainer}>
                         <RestaurantImage image={restaurant.image_url} />
                         <RestaurantInfo name={restaurant.name} rating={restaurant.rating} />
@@ -47,22 +48,19 @@ export default function RestaurantItems({ navigation, ...props }) {
                 </TouchableOpacity>
             ))}
         </>
-    )
+    );
 }
 
-const RestaurantImage = (props) => (
+const RestaurantImage = props => (
     <>
-        <Image
-            source={{ uri: props.image }}
-            style={styles.restaurantItemsImage}
-        />
+        <Image source={{ uri: props.image }} style={styles.restaurantItemsImage} />
         <TouchableOpacity style={styles.restaurantItemsFavoriteButton}>
-            <MaterialCommunityIcons name='heart-outline' size={25} color="#fffff" />
+            <MaterialCommunityIcons name="heart-outline" size={25} color="#fffff" />
         </TouchableOpacity>
     </>
-)
+);
 
-const RestaurantInfo = (props) => (
+const RestaurantInfo = props => (
     <View style={styles.restaurantItemsInfo}>
         <View>
             <Text style={styles.restaurantItemsName}>{props.name}</Text>
@@ -72,4 +70,6 @@ const RestaurantInfo = (props) => (
             <Text>{props.rating}</Text>
         </View>
     </View>
-)
+);
+
+export default RestaurantItems;
