@@ -3,9 +3,8 @@ import { SafeAreaView, ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import { Divider } from '@rneui/themed';
 
-import BottomTabs from '../components/home/BottomTabs';
-import RestaurantItems from '../components/home/RestaurantItems';
-
+import BottomTabs from '../components/Home/BottomTabs';
+import RestaurantItems from '../components/Home/RestaurantItems';
 export const localRestaurants = [
     {
         name: 'Clarita',

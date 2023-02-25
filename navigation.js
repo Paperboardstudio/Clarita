@@ -3,15 +3,15 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { Provider as ReduxProvider } from 'react-redux';
 
-import configureStore from './redux/store';
+import configureStore from './src/redux/store';
 
-import Home from './screens/Home';
-import orderCompleted from './screens/OrderCompleted';
-import Login from './firebase/Login';
-import Register from './firebase/Register';
-import UserSelect from './firebase/UserSelect';
-import Account from './firebase/Account';
-import RestaurantDetails from './screens/RestaurantDetails';
+import Home from './src/screens/Home';
+import orderCompleted from './src/screens/OrderCompleted';
+import Login from './src/firebase/Login';
+import Register from './src/firebase/Register';
+import UserSelect from './src/firebase/UserSelect';
+import Account from './src/firebase/Account';
+import RestaurantDetails from './src/screens/RestaurantDetails';
 
 /**
  *

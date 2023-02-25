@@ -4,7 +4,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 
-import styles from '../../styles';
+import styles from '../../../styles';
 
 /**
  * CURRENTLY UNUSED (POSSIBLY WILL BE DELETED)

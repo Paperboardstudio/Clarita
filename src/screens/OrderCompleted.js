@@ -6,7 +6,7 @@ import AnimatedLottieView from 'lottie-react-native';
 import firestore from '@react-native-firebase/firestore';
 
 import MenuItems from '../components/restaurantDetails/MenuItems';
-import styles from '../styles';
+import styles from '../../styles';
 
 /**
  * @brief Component for displaying order completion confirmation and details.
