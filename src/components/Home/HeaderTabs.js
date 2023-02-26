@@ -18,7 +18,7 @@ function HeaderTabs() {
     );
 }
 
-const HeaderButton = props => (
+export const HeaderButton = props => (
     <TouchableOpacity
         style={[
             styles.headerButton,
@@ -30,5 +30,3 @@ const HeaderButton = props => (
         <Text style={styles.button}>{props.title}</Text>
     </TouchableOpacity>
 );
-
-export default HeaderTabs;

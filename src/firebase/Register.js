@@ -23,7 +23,7 @@ function showSuccessAlert(message) {
  * the user is redirected to the Account page. If an error occurs during registration, the appropriate error
  * message is logged to the console.
  */
-const Register = ({ navigation }) => {
+export const Register = ({ navigation }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -98,5 +98,3 @@ Register.propTypes = {
         navigate: PropTypes.func.isRequired
     }).isRequired
 };
-
-export default Register;

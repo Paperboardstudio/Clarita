@@ -24,7 +24,7 @@ const TEXT_VALUES = {
     REVIEW_LABEL: '+'
 };
 
-function About({
+export function About({
     route: {
         params: { name, image, price, reviews, rating, categories = DEFAULT_CATEGORIES }
     }
@@ -83,5 +83,3 @@ RestaurantTitle.propTypes = {
 RestaurantDescription.propTypes = {
     description: PropTypes.string
 };
-
-export default About;

@@ -23,7 +23,7 @@ Renders a list of restaurants
 @param {Array.<Object>} props.restaurantData - An array of restaurant data objects
 @returns {JSX.Element} - Restaurant list component
 */
-function RestaurantItems({ navigation, ...props }) {
+export function RestaurantItems({ navigation, ...props }) {
     return (
         <>
             {props.restaurantData.map((restaurant, index) => (
@@ -71,5 +71,3 @@ const RestaurantInfo = props => (
         </View>
     </View>
 );
-
-export default RestaurantItems;

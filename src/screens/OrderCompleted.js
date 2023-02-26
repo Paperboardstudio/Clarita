@@ -5,14 +5,14 @@ import PropTypes from 'prop-types';
 import AnimatedLottieView from 'lottie-react-native';
 import firestore from '@react-native-firebase/firestore';
 
-import MenuItems from '../components/restaurantDetails/MenuItems';
+import { MenuItems } from '../utils/paths';
 import styles from '../../styles';
 
 /**
  * @brief Component for displaying order completion confirmation and details.
  * @returns {JSX.Element} OrderCompleted screen view.
  */
-const OrderCompleted = () => {
+export function OrderCompleted() {
     // Extract selected items and restaurant name from the cart reducer state
     const {
         selectedItems: { items, restaurantName }
@@ -107,10 +107,8 @@ const OrderCompleted = () => {
             </View>
         </SafeAreaView>
     );
-};
+}
 
 OrderCompleted.propTypes = {
     // No props are being passed to this component
 };
-
-export default OrderCompleted;

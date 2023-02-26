@@ -11,7 +11,7 @@ import { handleAuthStateChange, logout } from './auth';
  * @param {object} navigation - Navigation object used to navigate between screens in the app.
  * @return {JSX.Element} Returns the JSX markup for the Account component.
  */
-function Account({ navigation }) {
+export function Account({ navigation }) {
     const [isInitializing, setIsInitializing] = useState(true);
     const [user, setUser] = useState();
 
@@ -49,5 +49,3 @@ function Account({ navigation }) {
 Account.propTypes = {
     navigation: PropTypes.object
 };
-
-export default Account;

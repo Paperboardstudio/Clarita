@@ -19,7 +19,7 @@ const ICONS = [
 @param {Object} navigation - A navigation prop that is used to navigate between different pages of the application.
 @return {JSX.Element} A JSX element that represents the BottomTabs component.
 */
-const BottomTabs = () => {
+export function BottomTabs() {
     const navigation = useNavigation();
 
     const renderItem = ({ item }) => (
@@ -44,6 +44,4 @@ const BottomTabs = () => {
             />
         </View>
     );
-};
-
-export default BottomTabs;
+}
