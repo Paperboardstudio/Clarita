@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 
-import styles from '../../../styles';
+import { styles } from './styles';
 
 /**
  * CURRENTLY UNUSED (POSSIBLY WILL BE DELETED)
  * Displays two clickable icons button at the top
  * @returns Two clickable button when imported
  */
-function HeaderTabs() {
+export function HeaderTabs() {
     const [activeTab, setActiveTab] = useState('Delivery');
     return (
         <View style={styles.headerTabsView}>
@@ -18,7 +18,7 @@ function HeaderTabs() {
     );
 }
 
-export const HeaderButton = props => (
+const HeaderButton = props => (
     <TouchableOpacity
         style={[
             styles.headerButton,

@@ -4,7 +4,7 @@ import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 
 import auth from '@react-native-firebase/auth';
-import styles from '../../styles';
+import { styles } from './styles';
 
 function showErrorAlert(message) {
     Alert.alert('Error', message);
@@ -14,7 +14,6 @@ function showSuccessAlert(message) {
     Alert.alert('Success', message);
 }
 /**
- *
  * @brief React component for registering a user account.
  * @param {Object} navigation - Object containing navigation functions.
  * @return {JSX.Element} Register component.

@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-import styles from '../../../styles';
+import { styles } from './styles';
 
 /**
  * @brief Renders a single order item with its name and price.

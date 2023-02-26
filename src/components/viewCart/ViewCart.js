@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import AnimatedLottieView from 'lottie-react-native';
 import firestore from '@react-native-firebase/firestore';
 
-import styles from '../../../styles';
+import { styles } from './styles';
 import { OrderItem } from '../../utils/paths';
 
 const CURRENCY = 'USD';

@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import auth from '@react-native-firebase/auth';
 
-import styles from '../../styles';
+import { styles } from './styles';
 
 /**
- *
  * @brief Login component that allows user to sign in with email and password.
  * @param {Object} navigation - The navigation prop passed by React Navigation.
  * @return {JSX.Element} A Login component with input fields for email and password and a Login button.
