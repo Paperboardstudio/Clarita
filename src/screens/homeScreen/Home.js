@@ -3,7 +3,7 @@ import { SafeAreaView, ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import { Divider } from '@rneui/themed';
 
-import { BottomTabs, RestaurantItems } from '../utils/paths';
+import { BottomTabs, RestaurantItems } from '../../utils/paths';
 
 export const localRestaurants = [
     {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Image, ScrollView } from 'react-native';
 
-import styles from '../../styles';
+import { styles } from './styles';
 
 /**
  * CURRENTLY UNUSED (POSSIBLY WILL BE DELETED)
@@ -9,6 +9,22 @@ import styles from '../../styles';
  * @param {*}
  * @returns Clickable icons when imported with different icons
  */
+
+export function Categories() {
+    return (
+        <View style={styles.categoriesView}>
+            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                {items.map((item, index) => (
+                    <View key={index} style={{ alignItems: 'center', marginRight: 30 }}>
+                        <Image source={item.image} style={styles.categoriesImage} />
+                        <Text style={{ fontSize: 13, fontWeight: '900' }}>{item.text}</Text>
+                    </View>
+                ))}
+            </ScrollView>
+        </View>
+    );
+}
+
 const items = [
     {
         image: require('../../assets/images/shopping-bag.png'),
@@ -39,18 +55,3 @@ const items = [
         text: 'Desserts'
     }
 ];
-
-export function Categories() {
-    return (
-        <View style={styles.categoriesView}>
-            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                {items.map((item, index) => (
-                    <View key={index} style={{ alignItems: 'center', marginRight: 30 }}>
-                        <Image source={item.image} style={styles.categoriesImage} />
-                        <Text style={{ fontSize: 13, fontWeight: '900' }}>{item.text}</Text>
-                    </View>
-                ))}
-            </ScrollView>
-        </View>
-    );
-}

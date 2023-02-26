@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 import AnimatedLottieView from 'lottie-react-native';
 import firestore from '@react-native-firebase/firestore';
 
-import { MenuItems } from '../utils/paths';
-import styles from '../../styles';
+import { MenuItems } from '../../utils/paths';
+import { styles } from './styles';
 
 /**
  * @brief Component for displaying order completion confirmation and details.
@@ -77,7 +77,7 @@ export function OrderCompleted() {
             <View style={styles.orderCompletedContent}>
                 <AnimatedLottieView
                     style={styles.orderCompletedCheckMark}
-                    source={require('../assets/animations/check-mark.json')}
+                    source={require('../../assets/animations/check-mark.json')}
                     autoPlay
                     speed={0.5}
                     loop={false}
@@ -98,7 +98,7 @@ export function OrderCompleted() {
                         <MenuItems foods={lastOrder.items} hideCheckbox marginLeft={10} />
                         <AnimatedLottieView
                             style={styles.orderCompletedCooking}
-                            source={require('../assets/animations/cooking.json')}
+                            source={require('../../assets/animations/cooking.json')}
                             autoPlay
                             speed={0.5}
                         />

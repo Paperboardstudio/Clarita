@@ -1,10 +1,10 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, FlatList } from 'react-native';
+import { FlatList, Text, TouchableOpacity, View } from 'react-native';
 import PropTypes from 'prop-types';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { useNavigation } from '@react-navigation/native';
 
-import styles from '../../../styles';
+import { styles } from './styles';
 
 const ICONS = [
     { name: 'home', text: 'Home' },
@@ -41,7 +41,21 @@ export function BottomTabs() {
                 keyExtractor={item => item.name}
                 horizontal
                 showsHorizontalScrollIndicator={false}
+                style={styles.bottomTabsIconContainer2}
             />
         </View>
     );
 }
+
+BottomTabs.propTypes = {
+    navigation: PropTypes.object
+};
+
+const itemPropType = {
+    name: PropTypes.string,
+    text: PropTypes.string
+};
+
+BottomTabs.defaultProps = {
+    items: ICONS
+};

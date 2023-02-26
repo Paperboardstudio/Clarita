@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import firestore from '@react-native-firebase/firestore';
 import { Divider } from '@rneui/themed';
 
-import { About } from '../utils/paths';
-import { MenuItems } from '../utils/paths';
-import { ViewCart } from '../utils/paths';
+import { About } from '../../utils/paths';
+import { MenuItems } from '../../utils/paths';
+import { ViewCart } from '../../utils/paths';
 
 /**
  * @brief RestaurantDetails component that displays restaurant details, menu items, and a view cart button.

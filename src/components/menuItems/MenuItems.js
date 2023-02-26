@@ -5,7 +5,7 @@ import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import { useDispatch, useSelector } from 'react-redux';
 import { Divider } from '@rneui/themed';
 
-import styles from '../../../styles';
+import { styles } from './styles';
 
 /**
  * A component that renders a list of food items, with optional checkboxes next to each item
