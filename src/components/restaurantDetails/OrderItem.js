@@ -8,7 +8,7 @@ import styles from '../../../styles';
  * @param item The item object containing the name and price.
  * @return The rendered OrderItem component.
  */
-function OrderItem({ item }) {
+export function OrderItem({ item }) {
     const { name, price } = item;
     return (
         <View style={styles.orderItemContainer}>
@@ -17,4 +17,3 @@ function OrderItem({ item }) {
         </View>
     );
 }
-export default OrderItem;

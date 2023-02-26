@@ -10,7 +10,7 @@ import styles from '../../styles';
  * @param {Object} navigation - The navigation prop passed by React Navigation.
  * @return {JSX.Element} A Login component with input fields for email and password and a Login button.
  */
-const Login = ({ navigation }) => {
+export function Login({ navigation }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [passwordVisible, setPasswordVisible] = useState(false);
@@ -86,10 +86,8 @@ const Login = ({ navigation }) => {
             </TouchableOpacity>
         </View>
     );
-};
+}
 
 Login.defaultProps = {
     navigation: {}
 };
-
-export default Login;

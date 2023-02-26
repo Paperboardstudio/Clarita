@@ -5,7 +5,7 @@ import AnimatedLottieView from 'lottie-react-native';
 import firestore from '@react-native-firebase/firestore';
 
 import styles from '../../../styles';
-import OrderItem from './OrderItem';
+import { OrderItem } from '../../utils/paths';
 
 const CURRENCY = 'USD';
 const CHECKOUT_DELAY = 2500;
@@ -16,7 +16,7 @@ const CHECKOUT_DELAY = 2500;
  * @param {object} navigation - Object used for navigation between screens.
  * @returns {JSX.Element} - Returns JSX code that renders a ViewCart component.
  */
-function ViewCart({ navigation }) {
+export function ViewCart({ navigation }) {
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const { items, restaurantName } = useSelector(({ cartReducer }) => cartReducer.selectedItems);
@@ -110,4 +110,3 @@ function ViewCart({ navigation }) {
         </>
     );
 }
-export default ViewCart;

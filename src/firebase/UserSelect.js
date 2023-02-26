@@ -10,7 +10,7 @@ import auth from '@react-native-firebase/auth';
  * If the user is logged in, it navigates to the Account page. Otherwise, it displays the Register and Login buttons.
  * @return {JSX.Element} UserSelect component JSX code
  */
-function UserSelect({ navigation }) {
+export function UserSelect({ navigation }) {
     const [initializing, setInitializing] = useState(true);
     const [user, setUser] = useState(null);
 
@@ -53,5 +53,3 @@ function UserSelect({ navigation }) {
 UserSelect.propTypes = {
     navigation: PropTypes.object.isRequired
 };
-
-export default UserSelect;

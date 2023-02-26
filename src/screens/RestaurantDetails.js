@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import firestore from '@react-native-firebase/firestore';
 import { Divider } from '@rneui/themed';
 
-import About from '../components/restaurantDetails/About';
-import MenuItems from '../components/restaurantDetails/MenuItems';
-import ViewCart from '../components/restaurantDetails/ViewCart';
+import { About } from '../utils/paths';
+import { MenuItems } from '../utils/paths';
+import { ViewCart } from '../utils/paths';
 
 /**
  * @brief RestaurantDetails component that displays restaurant details, menu items, and a view cart button.
@@ -14,7 +14,7 @@ import ViewCart from '../components/restaurantDetails/ViewCart';
  * @param {object} navigation - The navigation object used for navigating between screens.
  * @return {JSX.Element} A view containing the About, MenuItems, and ViewCart components.
  */
-export default function RestaurantDetails({ route, navigation }) {
+export function RestaurantDetails({ route, navigation }) {
     const [menuData, setMenuData] = useState([]);
 
     useEffect(() => {

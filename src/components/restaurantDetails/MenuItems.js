@@ -18,7 +18,7 @@ import styles from '../../../styles';
  * @param {number} [props.marginLeft=0] - The amount of left margin to apply to each food image.
  * @returns {JSX.Element} - The rendered component.
  */
-function MenuItems({ restaurantName, foods, hideCheckbox = false, marginLeft = 0 }) {
+export function MenuItems({ restaurantName, foods, hideCheckbox = false, marginLeft = 0 }) {
     const dispatch = useDispatch();
     const cartItems = useSelector(state => state.cartReducer.selectedItems.items);
 
@@ -108,5 +108,3 @@ MenuItems.propTypes = {
     hideCheckbox: PropTypes.bool,
     marginLeft: PropTypes.number
 };
-
-export default MenuItems;

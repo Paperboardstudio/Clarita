@@ -40,7 +40,7 @@ const items = [
     }
 ];
 
-export default function Categories() {
+export function Categories() {
     return (
         <View style={styles.categoriesView}>
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>

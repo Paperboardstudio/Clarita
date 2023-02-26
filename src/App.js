@@ -1,8 +1,7 @@
 import React from 'react';
-import RootNavigation from './navigation';
+import { RootNavigation } from './navigation/navigation';
 
 /**
- *
  * @brief This function exports the App component that renders the RootNavigation component.
  * @return {JSX.Element} The RootNavigation component to be rendered.
  */

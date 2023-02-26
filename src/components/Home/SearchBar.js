@@ -11,7 +11,7 @@ import styles from '../../../styles';
  * Displays a search bar
  * @returns a search bar that uses GooglePlaces to find restaurants in a area
  */
-function SearchBar() {
+export function SearchBar() {
     return (
         <View style={styles.searchBarContainer}>
             <GooglePlacesAutocomplete
@@ -32,4 +32,3 @@ function SearchBar() {
         </View>
     );
 }
-export default SearchBar;

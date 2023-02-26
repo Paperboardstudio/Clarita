@@ -3,8 +3,8 @@ import { SafeAreaView, ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import { Divider } from '@rneui/themed';
 
-import BottomTabs from '../components/Home/BottomTabs';
-import RestaurantItems from '../components/Home/RestaurantItems';
+import { BottomTabs, RestaurantItems } from '../utils/paths';
+
 export const localRestaurants = [
     {
         name: 'Clarita',
@@ -22,7 +22,7 @@ export const localRestaurants = [
  * @param {Object} navigation - Navigation object for React Navigation
  * @return {JSX.Element} Home screen view
  */
-const Home = ({ navigation }) => {
+export function Home({ navigation }) {
     const [restaurantData, setRestaurantData] = useState(localRestaurants);
 
     return (
@@ -36,10 +36,8 @@ const Home = ({ navigation }) => {
             <BottomTabs navigation={navigation} />
         </SafeAreaView>
     );
-};
+}
 
 Home.propTypes = {
     navigation: PropTypes.object
 };
-
-export default Home;
